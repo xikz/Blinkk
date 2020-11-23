@@ -1,0 +1,22 @@
+<a href="/admin/links">links</a>
+<h1>Collections</h1>
+
+<h2>Adding a new collection</h2>
+<form action="/admin/addcollection" method="POST">
+
+    <label for="collectionName">Collection Name</label>
+    <input type="text" id="collectionName" name="collectionName" , placeholder="Collection Name">
+
+    <label for="collectionImage">image</label>
+    <input type="text" id="collectionImage" name="collectionImage">
+
+    <button type="submit">Add Collection</button>
+</form>
+
+<h2>User Collections:</h2>
+
+{{#each user.groups}}
+<div>{{this.groupName}}
+    <a href="#">Open Collection</a>
+</div>
+{{/each}}

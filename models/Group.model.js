@@ -5,8 +5,6 @@ const { Schema, model } = require("mongoose");
 const groupSchema = new Schema({
   groupName: {
     type: String,
-    unique: true,
-    required: true,
   },
 
   groupImage: { type: String },
@@ -17,6 +15,11 @@ const groupSchema = new Schema({
       ref: "Link",
     },
   ],
+
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Group = model("Group", groupSchema);

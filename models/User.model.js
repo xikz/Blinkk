@@ -24,11 +24,14 @@ const userSchema = new Schema({
       ref: "Link",
     },
   ],
+
   interests: [{ type: String, enum: ["Music", "Food", "Sports"] }],
+
   groups: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Group",
+      default: "",
     },
   ],
 });
