@@ -30,11 +30,9 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   }
 
   if (!username && !password) {
-    return res
-      .status(400)
-      .render("auth/signup", {
-        errorMessage: "Please provide your username and password.",
-      });
+    return res.status(400).render("auth/signup", {
+      errorMessage: "Please provide your username and password.",
+    });
   }
 
   if (!email) {
@@ -64,59 +62,43 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
 
   // Search the database for a user with the username submitted in the form
 
-  User.findOne({ username }).then((found) => {
-    if (found) {
-      return res
-        .status(400)
-        .render("auth/signup", { errorMessage: "Username already taken" });
-    }
-    return bcrypt
-      .genSalt(saltRounds)
-      .then((salt) => bcrypt.hash(password, salt))
-      .then((hashedPassword) => {
-        return User.create({
-          username,
-          email,
-          password: hashedPassword,
-        });
-      })
-     .then((user) => {
+  User.findOne({ username })
+    .then((found) => {
+      if (found) {
+        return res
+          .status(400)
+          .render("auth/signup", { errorMessage: "Username already taken" });
+      }
+      return bcrypt
+        .genSalt(saltRounds)
+        .then((salt) => bcrypt.hash(password, salt))
+        .then((hashedPassword) => {
+          return User.create({
+            username,
+            email,
+            password: hashedPassword,
+          });
+        })
+        .then((user) => {
           req.session.user = user;
           console.log("user:", user);
-          return Group.create({
-            groupName: "My Accounts",
-            owner: user,
-          })
-            .then((createdCollection) => {
-              console.log("created:", createdCollection);
-              User.findByIdAndUpdate(
-                req.session.user._id,
-                {
-                  $addToSet: { groups: createdCollection },
-                },
-                {
-                  new: true,
-                }
-              );
-            })
-            .then((updatedUser) => {
-              console.log(updatedUser);
-              res.redirect("/admin");
-            });
+          res.redirect("/admin/links");
         });
-      // binds the user to the session object
     })
-      .catch((error) => {
-        if (error instanceof mongoose.Error.ValidationError) {
-          return res
-            .status(400)
-            .render("auth/signup", { errorMessage: error.message });
-        }
-        if (error.code === 11000) {
-          return res.status(400).render("auth/signup", {
-            errorMessage:
-              "Username need to be unique. THe username you chose is already in used.",
-
+    .catch((error) => {
+      if (error instanceof mongoose.Error.ValidationError) {
+        return res
+          .status(400)
+          .render("auth/signup", { errorMessage: error.message });
+      }
+      if (error.code === 11000) {
+        return res.status(400).render("auth/signup", {
+          errorMessage:
+            "Username need to be unique. THe username you chose is already in used.",
+        });
+      }
+    });
+});
 
 router.get("/login", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/login");

@@ -1,28 +1,13 @@
 const router = require("express").Router();
-const User = require("../models/User.model");
 const mongoose = require("mongoose");
 const Link = require("../models/Link.model");
-const shouldNotBeLoggedIn = require("../middlewares/shouldNotBeLoggedIn");
 const isLoggedIn = require("../middlewares/isLoggedIn");
 const User = require("../models/User.model");
 const Group = require("../models/Group.model");
 
-router.get("/", isLoggedIn, (req, res) => {
-  res.render("admin/admin");
-});
+router.get("/admin/updateprofile", (req, res, next) => {});
 
-router.get("/settings", isLoggedIn, (req, res, next) => {
-  res.render("admin/settings");
-});
-
-router.get("/appearance", isLoggedIn, (req, res, next) => {
-  res.render("admin/appearance");
-});
-
-router.get("/analytics", isLoggedIn, (req, res, next) => {
-  res.render("admin/analytics");
-});
-
+router.put("/admin/updateprofile", (req, res, next) => {});
 
 //*Must to be logged in
 router.get("/admin/links", isLoggedIn, (req, res, next) => {
