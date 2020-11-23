@@ -10,8 +10,15 @@ const groupSchema = new Schema({
   },
 
   groupImage: { type: String },
+
+  links: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Link",
+    },
+  ],
 });
 
 const Group = model("Group", groupSchema);
 
-module.exports = User;
+module.exports = Group;
