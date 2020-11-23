@@ -1,3 +1,4 @@
+<a href="/admin/collections">collections</a>
 <h1>Links</h1>
 <h2>Adding Link</h2>
 <form action="/admin/addlink" method="POST">
@@ -21,4 +22,15 @@
    <button type="submit">Add Link</button>
 </form>
 
-<h2>Current Links</h2>
+<h2>Current User Links</h2>
+
+{{#each user.links}}
+<div class="admin-links-link">{{this.linkTitle}}
+   <a href="#">Update Link</a>
+</div>
+{{/each}}
+
+<h2>User Categories</h2>
+{{#each user.groups}}
+<div>{{this.groupName}}</div>
+{{/each}}

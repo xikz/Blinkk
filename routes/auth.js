@@ -9,10 +9,12 @@ const saltRounds = 10;
 
 // Requiring the User model in order to interact with the database
 const User = require("../models/User.model");
+const Group = require("../models/Group.model");
 
 // Requiring necessary middlewares in order to control access to specific routes
 const shouldNotBeLoggedIn = require("../middlewares/shouldNotBeLoggedIn");
 const isLoggedIn = require("../middlewares/isLoggedIn");
+const { create } = require("hbs");
 
 router.get("/signup", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/signup");
@@ -61,6 +63,7 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   */
 
   // Search the database for a user with the username submitted in the form
+
   User.findOne({ username }).then((found) => {
     if (found) {
       return res
@@ -77,12 +80,32 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
           password: hashedPassword,
         });
       })
-      .then((user) => {
-        // binds the user to the session object
-        console.log("User signed up", user);
-        req.session.user = user;
-        res.render("profile");
-      })
+     .then((user) => {
+          req.session.user = user;
+          console.log("user:", user);
+          return Group.create({
+            groupName: "My Accounts",
+            owner: user,
+          })
+            .then((createdCollection) => {
+              console.log("created:", createdCollection);
+              User.findByIdAndUpdate(
+                req.session.user._id,
+                {
+                  $addToSet: { groups: createdCollection },
+                },
+                {
+                  new: true,
+                }
+              );
+            })
+            .then((updatedUser) => {
+              console.log(updatedUser);
+              res.redirect("/admin");
+            });
+        });
+      // binds the user to the session object
+    })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
           return res
@@ -93,14 +116,7 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
           return res.status(400).render("auth/signup", {
             errorMessage:
               "Username need to be unique. THe username you chose is already in used.",
-          });
-        }
-        return res
-          .status(500)
-          .render("auth/signup", { errorMessage: error.message });
-      });
-  });
-});
+
 
 router.get("/login", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/login");
@@ -129,7 +145,7 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
 
   //   * Here we use the same logic as above - either length based parameters or we check the strength of a password
   if (password.length < 8) {
-    return res.status(400).render("login", {
+    return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 8 characters",
     });
   }
