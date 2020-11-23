@@ -18,19 +18,12 @@ const linkSchema = new Schema({
 
   linkUrl: { type: String, required: true },
 
-  thumbnail_url: {
+  thumbnailUrl: {
     type: String,
     required: true,
   },
-
-  group: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Group",
-    },
-  ],
 });
 
-const User = model("Link", linkSchema);
+const Link = model("Link", linkSchema);
 
-module.exports = User;
+module.exports = Link;
