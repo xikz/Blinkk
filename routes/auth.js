@@ -16,17 +16,31 @@ const shouldNotBeLoggedIn = require("../middlewares/shouldNotBeLoggedIn");
 const isLoggedIn = require("../middlewares/isLoggedIn");
 const { create } = require("hbs");
 
-router.get("/auth/signup", shouldNotBeLoggedIn, (req, res) => {
+router.get("/signup", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/signup");
 });
 
-router.post("/auth/signup", shouldNotBeLoggedIn, (req, res) => {
-  const { username, email, password } = req.body;
+router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
+  const { email, username, password } = req.body;
 
   if (!username) {
     return res
       .status(400)
       .render("auth/signup", { errorMessage: "Please provide your username" });
+  }
+
+  if (!username && !password) {
+    return res
+      .status(400)
+      .render("auth/signup", {
+        errorMessage: "Please provide your username and password.",
+      });
+  }
+
+  if (!email) {
+    return res
+      .status(400)
+      .render("auth/signup", { errorMessage: "Please provide your email" });
   }
 
   if (password.length < 8) {
@@ -49,24 +63,24 @@ router.post("/auth/signup", shouldNotBeLoggedIn, (req, res) => {
   */
 
   // Search the database for a user with the username submitted in the form
-  User.findOne({ username })
-    .then((found) => {
-      if (found) {
-        return res
-          .status(400)
-          .render("auth/signup", { errorMessage: "Username already taken" });
-      }
-      return bcrypt
-        .genSalt(saltRounds)
-        .then((salt) => bcrypt.hash(password, salt))
-        .then((hashedPassword) => {
-          return User.create({
-            username,
-            email,
-            password: hashedPassword,
-          });
-        })
-        .then((user) => {
+
+  User.findOne({ username }).then((found) => {
+    if (found) {
+      return res
+        .status(400)
+        .render("auth/signup", { errorMessage: "Username already taken" });
+    }
+    return bcrypt
+      .genSalt(saltRounds)
+      .then((salt) => bcrypt.hash(password, salt))
+      .then((hashedPassword) => {
+        return User.create({
+          username,
+          email,
+          password: hashedPassword,
+        });
+      })
+     .then((user) => {
           req.session.user = user;
           console.log("user:", user);
           return Group.create({
@@ -87,40 +101,46 @@ router.post("/auth/signup", shouldNotBeLoggedIn, (req, res) => {
             })
             .then((updatedUser) => {
               console.log(updatedUser);
-              res.redirect("/");
+              res.redirect("/admin");
             });
         });
       // binds the user to the session object
     })
-    .catch((error) => {
-      if (error instanceof mongoose.Error.ValidationError) {
-        return res
-          .status(400)
-          .render("auth/signup", { errorMessage: error.message });
-      }
-      if (error.code === 11000) {
-        return res.status(400).render("auth/signup", {
-          errorMessage:
-            "Username need to be unique. THe username you chose is already in used.",
-        });
-      }
-      return res
-        .status(500)
-        .render("auth/signup", { errorMessage: error.message });
-    });
-});
+      .catch((error) => {
+        if (error instanceof mongoose.Error.ValidationError) {
+          return res
+            .status(400)
+            .render("auth/signup", { errorMessage: error.message });
+        }
+        if (error.code === 11000) {
+          return res.status(400).render("auth/signup", {
+            errorMessage:
+              "Username need to be unique. THe username you chose is already in used.",
 
-router.get("/auth/login", shouldNotBeLoggedIn, (req, res) => {
+
+router.get("/login", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/login");
 });
 
-router.post("/auth/login", shouldNotBeLoggedIn, (req, res) => {
+router.post("/login", shouldNotBeLoggedIn, (req, res) => {
   const { username, password } = req.body;
 
   if (!username) {
     return res
       .status(400)
       .render("auth/login", { errorMessage: "Please provide your username" });
+  }
+
+  if (!password) {
+    return res
+      .status(400)
+      .render("auth/login", { errorMessage: "Please provide your password" });
+  }
+
+  if (!password && !username) {
+    return res.status(400).render("auth/login", {
+      errorMessage: "You need to provide your username and your password.",
+    });
   }
 
   //   * Here we use the same logic as above - either length based parameters or we check the strength of a password
@@ -135,7 +155,7 @@ router.post("/auth/login", shouldNotBeLoggedIn, (req, res) => {
       if (!user) {
         return res
           .status(400)
-          .render("login", { errorMessage: "Wrong credentials" });
+          .render("auth/login", { errorMessage: "Wrong credentials" });
       }
       req.session.user = user;
       return bcrypt.compare(password, user.password);
@@ -147,7 +167,7 @@ router.post("/auth/login", shouldNotBeLoggedIn, (req, res) => {
           .render("auth/login", { errorMessage: "Wrong credentials" });
       }
       // req.session.user = user._id ! better and safer but in this case we saving the entire user object
-      return res.redirect("/");
+      return res.redirect("/admin");
     })
     .catch((err) => {
       console.log(err);
@@ -158,7 +178,7 @@ router.post("/auth/login", shouldNotBeLoggedIn, (req, res) => {
     });
 });
 
-router.get("/auth/logout", isLoggedIn, (req, res) => {
+router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
     if (err) {
       return res
