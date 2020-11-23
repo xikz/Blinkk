@@ -28,11 +28,9 @@ router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   }
 
   if (!username && !password) {
-    return res
-      .status(400)
-      .render("auth/signup", {
-        errorMessage: "Please provide your username and password.",
-      });
+    return res.status(400).render("auth/signup", {
+      errorMessage: "Please provide your username and password.",
+    });
   }
 
   if (!email) {
