@@ -18,13 +18,21 @@ router.get("/signup", shouldNotBeLoggedIn, (req, res) => {
   res.render("auth/signup");
 });
 
-router.post("/auth/signup", shouldNotBeLoggedIn, (req, res) => {
+router.post("/signup", shouldNotBeLoggedIn, (req, res) => {
   const { email, username, password } = req.body;
 
   if (!username) {
     return res
       .status(400)
       .render("auth/signup", { errorMessage: "Please provide your username" });
+  }
+
+  if (!username && !password) {
+    return res
+      .status(400)
+      .render("auth/signup", {
+        errorMessage: "Please provide your username and password.",
+      });
   }
 
   if (!email) {
@@ -65,14 +73,15 @@ router.post("/auth/signup", shouldNotBeLoggedIn, (req, res) => {
       .then((hashedPassword) => {
         return User.create({
           username,
+          email,
           password: hashedPassword,
         });
       })
       .then((user) => {
-        console.log(user);
         // binds the user to the session object
+        console.log("User signed up", user);
         req.session.user = user;
-        res.redirect("/");
+        res.render("profile");
       })
       .catch((error) => {
         if (error instanceof mongoose.Error.ValidationError) {
@@ -103,7 +112,19 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
   if (!username) {
     return res
       .status(400)
-      .render("login", { errorMessage: "Please provide your username" });
+      .render("auth/login", { errorMessage: "Please provide your username" });
+  }
+
+  if (!password) {
+    return res
+      .status(400)
+      .render("auth/login", { errorMessage: "Please provide your password" });
+  }
+
+  if (!password && !username) {
+    return res.status(400).render("auth/login", {
+      errorMessage: "You need to provide your username and your password.",
+    });
   }
 
   //   * Here we use the same logic as above - either length based parameters or we check the strength of a password
@@ -118,7 +139,7 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
       if (!user) {
         return res
           .status(400)
-          .render("login", { errorMessage: "Wrong credentials" });
+          .render("auth/login", { errorMessage: "Wrong credentials" });
       }
       req.session.user = user;
       return bcrypt.compare(password, user.password);
@@ -127,10 +148,10 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
       if (!isSamePassword) {
         return res
           .status(400)
-          .render("login", { errorMessage: "Wrong credentials" });
+          .render("auth/login", { errorMessage: "Wrong credentials" });
       }
       // req.session.user = user._id ! better and safer but in this case we saving the entire user object
-      return res.redirect("/");
+      return res.redirect("/admin");
     })
     .catch((err) => {
       console.log(err);

@@ -1,5 +1,9 @@
 // ℹ️ To get access to environment
 require("dotenv").config();
+const logger = require("morgan");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
 
 // ℹ️ Connect to the database
 require("./db");
@@ -7,7 +11,24 @@ require("./db");
 const express = require("express");
 const hbs = require("hbs");
 
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+
 const app = express();
+
+// app.use(logger("dev"));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
+
+// app.use(
+//   session({
+//     secret: "keyboard cat",
+//     resave: false,
+//     saveUninitialized: false,
+//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
+//   })
+// );
 
 // ℹ️ This function is getting exported from the config folder. It runs most middlewares
 require("./config")(app);
@@ -21,13 +42,18 @@ app.locals.title = `${capitalized(projectName)}- Generated with IronGenerator`;
 
 // 👇 Start handling routes here
 const index = require("./routes/index");
-app.use("/", index);
-
 const authRoutes = require("./routes/auth");
-app.use("/", authRoutes);
+const adminRoutes = require("./routes/admin");
+const supportRoutes = require("./routes/support");
+const infoRoutes = require("./routes/info");
+const settingsRoutes = require("./routes/settings");
 
-// const profileRoutes = require("./routes/profile");
-// app.use("/", profileRoutes);
+app.use("/", index);
+app.use("/auth", authRoutes);
+app.use("/admin", adminRoutes);
+app.use("/support", supportRoutes);
+app.use("/info", infoRoutes);
+app.use("/settings", settingsRoutes);
 
 // ❗ To handle errors. Routes that dont exist or errors that you handle in specfic routes
 require("./error-handling")(app);
