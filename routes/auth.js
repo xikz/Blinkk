@@ -78,17 +78,17 @@ router.post("/auth/signup", shouldNotBeLoggedIn, (req, res) => {
         if (error instanceof mongoose.Error.ValidationError) {
           return res
             .status(400)
-            .render("/auth/signup", { errorMessage: error.message });
+            .render("auth/signup", { errorMessage: error.message });
         }
         if (error.code === 11000) {
-          return res.status(400).render("/auth/signup", {
+          return res.status(400).render("auth/signup", {
             errorMessage:
               "Username need to be unique. THe username you chose is already in used.",
           });
         }
         return res
           .status(500)
-          .render("/auth/signup", { errorMessage: error.message });
+          .render("auth/signup", { errorMessage: error.message });
       });
   });
 });
