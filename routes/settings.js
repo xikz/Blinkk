@@ -40,6 +40,12 @@ router.post("/password", isLoggedIn, (req, res) => {
     });
   }
 
+  if (newPassword.length < 8 || confirmPassword.length < 8) {
+    res.render("sett/password", {
+      message: "Your password need to have at least 8 characters.",
+    });
+  }
+
   // compareSync does the same as compare, but does it synchronously.
   const isSamePassword = bcrypt.compareSync(
     oldPassword,

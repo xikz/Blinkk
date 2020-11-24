@@ -57,7 +57,7 @@ router.post("/addlink", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.put("/links", (req, res, next) => {});
+router.put("/links", isLoggedIn, (req, res, next) => {});
 
 router.get("/collections", isLoggedIn, (req, res, next) => {
   User.findById(req.session.user._id)
