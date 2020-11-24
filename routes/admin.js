@@ -6,7 +6,7 @@ const User = require("../models/User.model");
 const Group = require("../models/Group.model");
 
 router.get("/", isLoggedIn, (req, res) => {
-  res.render("admin/admin");
+  res.render("admin/links");
 });
 
 //*Must to be logged in
