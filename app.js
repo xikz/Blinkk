@@ -50,7 +50,7 @@ const settingsRoutes = require("./routes/settings");
 
 app.use("/", index);
 app.use("/auth", authRoutes);
-app.use("/", adminRoutes);
+app.use("/admin", adminRoutes);
 app.use("/support", supportRoutes);
 app.use("/info", infoRoutes);
 app.use("/settings", settingsRoutes);

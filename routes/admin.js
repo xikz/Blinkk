@@ -5,12 +5,12 @@ const isLoggedIn = require("../middlewares/isLoggedIn");
 const User = require("../models/User.model");
 const Group = require("../models/Group.model");
 
-router.get("/admin/updateprofile", (req, res, next) => {});
-
-router.put("/admin/updateprofile", (req, res, next) => {});
+router.get("/", isLoggedIn, (req, res) => {
+  res.render("admin/admin");
+});
 
 //*Must to be logged in
-router.get("/admin/links", isLoggedIn, (req, res, next) => {
+router.get("/links", isLoggedIn, (req, res, next) => {
   User.findById(req.session.user._id)
     .populate("links")
     .populate("groups")
@@ -21,7 +21,7 @@ router.get("/admin/links", isLoggedIn, (req, res, next) => {
 });
 
 //*Must to be logged in
-router.post("/admin/addlink", isLoggedIn, (req, res, next) => {
+router.post("/addlink", isLoggedIn, (req, res, next) => {
   const {
     linkUrl,
     linkTitle,
@@ -57,9 +57,9 @@ router.post("/admin/addlink", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.put("/admin/links", (req, res, next) => {});
+router.put("/links", (req, res, next) => {});
 
-router.get("/admin/collections", isLoggedIn, (req, res, next) => {
+router.get("/collections", isLoggedIn, (req, res, next) => {
   User.findById(req.session.user._id)
     .populate("groups")
     .then((user) => {
@@ -68,7 +68,7 @@ router.get("/admin/collections", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.post("/admin/addcollection", isLoggedIn, (req, res, next) => {
+router.post("/addcollection", isLoggedIn, (req, res, next) => {
   const { collectionName, collectionImage } = req.body;
   Group.create({
     groupName: collectionName,
@@ -95,8 +95,12 @@ router.post("/admin/addcollection", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.get("/admin/analytics", (req, res, next) => {});
+router.get("/analytics", isLoggedIn, (req, res, next) => {
+  res.render("admin/analytics");
+});
 
-router.get("/admin/appearence", (req, res, next) => {});
+router.get("/appearance", isLoggedIn, (req, res, next) => {
+  res.render("admin/appearance");
+});
 
 module.exports = router;
