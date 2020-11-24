@@ -6,11 +6,24 @@
 </h1>
 <a href="/admin/links">My Links</a>
 <a href="/settings">User Settings</a>
-<a href="/admin/appearance">Appearance</a>
+<a href="/appearance">Appearance</a>
 <a href="/admin/analytics">Analytics</a>
 <br><br>
 APPEAR PAGE
 
 <h3>profile picture</h3>
-<button type="submit">Pic an image</button>
+
+<img src="{{foundUser.profilePic}}" style="width: 100px">
+
+<h1>{{foundUser.username}}</h1>
+
+<form method="POST" action="/appearance" enctype="multipart/form-data" style="width: 100px;">
+    <input type="file" name="imageUrl" accept="image/png, image/jpg">
+    <button type="submit">Submit</button>
+</form>
+
+{{#if errorMessage}}
+{{errorMessage}}
+{{/if}}
+<br>
 <button type="submit">Remove</button>

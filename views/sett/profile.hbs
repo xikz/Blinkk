@@ -3,73 +3,38 @@
 <a href="/auth/logout" style="color: red">Log out</a>
 <br><br>
 
+
 <h1>Edit your profile</h1>
 
 
 
-<form action="/auth/login" method="POST">
+<form action="/settings/upload" method="POST">
 
     <h3>Username</h3>
 
     <label for="username"></label>
-    <input type="text" id="username" name="username" placeholder="mnblski">
-
-    {{#if errorMessage}}
-    {{errorMessage}}
-    {{/if}}
+    <input type="text" id="username" name="username" value="{{foundUser.username}}"
+        placeholder="{{foundUser.username}}">
 
     <h3>Email</h3>
 
     <label for="email"></label>
-    <input type="email" id="email" name="email" placeholder="mmm@gmail.com">
-
-    {{#if errorMessage}}
-    {{errorMessage}}
-    {{/if}}
-
-    <h3>Gender</h3>
-
-    <label for="gender"></label>
-    <select id="gender" name="gender">
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Non-binary">Non-binary</option>
-    </select>
-
-    <h3>Date of birth</h3>
-
-    <label for="date"></label>
-    <input type="email" id="email" name="email" placeholder="">
-
-    {{#if errorMessage}}
-    {{errorMessage}}
-    {{/if}}
-
-    <h3>Location</h3>
-
-    <label for="email"></label>
-    <input type="email" id="email" name="email" placeholder="">
-
-    {{#if errorMessage}}
-    {{errorMessage}}
-    {{/if}}
+    <input type="text" id="email" name="email" value="{{foundUser.email}}" placeholder=" {{foundUser.email}}">
 
 
-    {{!-- <hr>
-    <h3>Confirm your password</h3>
+    <h3>Bio</h3>
 
+    <label for="bio"></label>
+    <input type="text" id="bio" name="bio" value="{{foundUser.bio}}" placeholder=" {{foundUser.bio}}">
 
-    <label for="password"></label>
-    <input type="password" id="password" name="password">
-
-    {{#if errorMessage}}
-    {{errorMessage}}
-    {{/if}}
-    <br> <br> --}}
-    <br>
-    <br>
+    <br><br>
     <button type="submit">Save Changes</button>
 
 </form>
-
+<br>
 <a href="/">Cancel</a>
+
+
+{{#if errorMessage}}
+{{errorMessage}}
+{{/if}}

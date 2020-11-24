@@ -4,6 +4,7 @@ const Link = require("../models/Link.model");
 const isLoggedIn = require("../middlewares/isLoggedIn");
 const User = require("../models/User.model");
 const Group = require("../models/Group.model");
+const uploader = require("../config/cloudinary.config.js");
 
 router.get("/", isLoggedIn, (req, res) => {
   res.render("admin/links");
@@ -102,10 +103,6 @@ router.post("/addcollection", isLoggedIn, (req, res, next) => {
 
 router.get("/analytics", isLoggedIn, (req, res, next) => {
   res.render("admin/analytics");
-});
-
-router.get("/appearance", isLoggedIn, (req, res, next) => {
-  res.render("admin/appearance");
 });
 
 module.exports = router;
