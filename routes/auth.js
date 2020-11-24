@@ -113,18 +113,19 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
           .status(400)
           .render("auth/login", { errorMessage: "This user does not exist." });
       }
-      req.session.user = user;
-      return bcrypt.compare(password, user.password);
+
+      return bcrypt.compare(password, user.password).then((isSamePassword) => {
+        if (!isSamePassword) {
+          return res
+            .status(400)
+            .render("auth/login", { errorMessage: "Incorrect password" });
+        }
+        // req.session.user = user._id ! better and safer but in this case we saving the entire user object
+        req.session.user = user;
+        return res.redirect("/admin");
+      });
     })
-    .then((isSamePassword) => {
-      if (!isSamePassword) {
-        return res
-          .status(400)
-          .render("auth/login", { errorMessage: "Incorrect password" });
-      }
-      // req.session.user = user._id ! better and safer but in this case we saving the entire user object
-      return res.redirect("/admin");
-    })
+
     .catch((err) => {
       console.log(err);
       // in this case we are sending the error handling to the error handling middleware that is defined in the error handling file
