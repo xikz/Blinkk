@@ -1,5 +1,3 @@
-const Group = require(".../models/Group.model");
-
 document.addEventListener(
   "DOMContentLoaded",
   () => {
