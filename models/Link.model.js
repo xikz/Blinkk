@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema, model } = require("mongoose");
+const { Schema, model, Mongoose } = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const linkSchema = new Schema({
@@ -21,6 +21,11 @@ const linkSchema = new Schema({
   thumbnailUrl: {
     type: String,
     required: true,
+  },
+
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
   },
 });
 
