@@ -1,11 +1,54 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
 
 a {
-  color: #00b7ff; }
+  color: rgb(255, 36, 109);
+}
 
 h1 {
-  color: 15px; }
+  color: 15px;
+}
 
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+
+.admin-link {
+  background-color: cornsilk;
+  padding: 10px;
+  margin: 10px 0px;
+  border-radius: 10px;
+}
+
+.drop-zone {
+  color: blue;
+}
+
+.drop-zone--over {
+  opacity: 0.5;
+}
+
+.user-collections {
+  display: flex;
+}
+
+.collection {
+  background-color: purple;
+  padding: 10px;
+  margin: 10px;
+}
+
+.collection-admin-text {
+  margin: 0px;
+  color: white;
+  font-size: 0.5em;
+}
+
+#add-new-collection {
+  background-color: grey;
+}
 /*# sourceMappingURL=style.css.map */

@@ -9,7 +9,6 @@
 <a href="/admin/appearance">Appearance</a>
 <a href="/admin/analytics">Analytics</a>
 <br><br>
-<a href="/admin/collections">collections</a>
 <h1>Links</h1>
 <h2>Adding Link</h2>
 <form action="/admin/addlink" method="POST">
@@ -33,15 +32,36 @@
    <button type="submit">Add Link</button>
 </form>
 
-<h2>Current User Links</h2>
+<h2>Profile User Links</h2>
+<ul class="admin-links">
+   {{#each user.links}}
 
-{{#each user.links}}
-<div class="admin-links-link">{{this.linkTitle}}
-   <a href="#">Update Link</a>
+
+   <li class="admin-link" id={{this._id}} draggable="true">
+      <div>{{this.linkTitle}}
+         <a href="#">Update Link</a>
+         <a href="/admin/links/{{this._id}}/delete">Remove Link</a>
+      </div>
+   </li>
+
+
+   {{/each}}
+</ul>
+
+<h2>User Collections</h2>
+
+<div class="user-collections">
+
+   {{#each user.groups}}
+   <div id="{{this._id}}" class="collection drop-zone">
+      {{this.groupName}}
+      <p class="collection-admin-text">delete</p>
+   </div>
+
+   {{/each}}
+
+   <a href="/admin/collections">
+      <div id="add-new-collection" class="collection"> Add new collection ></div>
+   </a>
+
 </div>
-{{/each}}
-
-<h2>User Categories</h2>
-{{#each user.groups}}
-<div>{{this.groupName}}</div>
-{{/each}}

@@ -57,6 +57,11 @@ router.post("/addlink", isLoggedIn, (req, res, next) => {
     });
 });
 
+router.get("/links/:_id/delete", (req, res, next) => {
+  console.log(req.params);
+  Link.findByIdAndRemove(req.params).then(() => res.redirect("/admin/links"));
+});
+
 router.put("/links", isLoggedIn, (req, res, next) => {});
 
 router.get("/collections", isLoggedIn, (req, res, next) => {

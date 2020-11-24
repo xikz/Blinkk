@@ -20,12 +20,27 @@ const linkSchema = new Schema({
 
   thumbnailUrl: {
     type: String,
-    required: true,
   },
 
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
+  },
+
+  date: {
+    type: Date,
+    default: Date.now(),
+  },
+
+  order: {
+    type: Number,
+    default: 0,
+  },
+
+  status: {
+    type: String,
+    default: "Unassigned",
+    enum: ["Unassigned", "Assigned"],
   },
 });
 
