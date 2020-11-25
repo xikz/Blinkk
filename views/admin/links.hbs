@@ -1,70 +1,100 @@
-<a href="/admin">Admin</a>
-<a href="/">View your Profile</a>
-<a href="/auth/logout" style="color: red">Log out</a>
-<br>
-<h1>Admin page
-</h1>
+<div class="adminPage">
+   <div class="homeNav">
 
-{{req.user.username}}
-
-<a href="/admin/links">My Links</a>
-<a href="/settings">User Settings</a>
-<a href="/appearance">Appearance</a>
-<a href="/admin/analytics">Analytics</a>
-<br><br>
-<h1>Links</h1>
-<h2>Adding Link</h2>
-<form action="/admin/addlink" method="POST">
-
-   <label for="linkUrl">URL</label>
-   <input type="text" id="linkUrl" name="linkUrl" , placeholder="Paste URL">
-
-   <label for="thumbnailUrl">image</label>
-   <input type="text" id="thumbnailUrl" name="thumbnailUrl">
-
-   <label for="linkTitle">Title</label>
-   <input type="text" id="linkTitle" name="linkTitle">
-
-   <label for="linkDescription">Description</label>
-   <input type="text" id="linkDescription" name="linkDescription">
-
-   <label for="contentFrom">From</label>
-   <input type="patextssword" id="contentFrom" name="contentFrom">
+      <h1>linkmee</h1>
+      <ul>
+         {{!-- <li><a href="support/faqs">Help</a></li> --}}
+         <a href="/">Profile</a>
+         <a href="/auth/logout">Log out</a>
+      </ul>
 
 
-   <button type="submit">Add Link</button>
-</form>
-
-<h2>Profile User Links</h2>
-<ul class="admin-links">
-   {{#each user.links}}
-
-
-   <li class="admin-link" id={{this._id}} draggable="true">
-      <div>{{this.linkTitle}}
-         <a href="#">Update Link</a>
-         <a href="/admin/links/{{this._id}}/delete">Remove Link</a>
+   </div>
+   <nav class="adminNav">
+      <a href="/admin/links" class="menuNavBold">My Links</a>
+      <a href="/settings">User Settings</a>
+      <a href="/appearance">Appearance</a>
+      <a href="/admin/analytics">Analytics</a>
+   </nav>
+   <div class="linksPage">
+      <div class="addLinkButton">
+         <h2>Add link ➕</h2>
       </div>
-   </li>
 
 
-   {{/each}}
-</ul>
+      <div class="addinLinkTab">
 
-<h2>User Collections</h2>
 
-<div class="user-collections">
+         <h2>Adding Link</h2>
 
-   {{#each user.groups}}
-   <div id="{{this._id}}" class="collection drop-zone">
-      {{this.groupName}}
-      <p class="collection-admin-text">delete</p>
+         <div class="linkForm">
+            <form action="/admin/addlink" method="POST">
+
+               <label for="linkUrl">URL</label>
+               <input type="text" id="linkUrl" name="linkUrl" , placeholder="Paste URL">
+
+               <label for="thumbnailUrl">image</label>
+               <input type="text" id="thumbnailUrl" name="thumbnailUrl">
+
+               <label for="linkTitle">Title</label>
+               <input type="text" id="linkTitle" name="linkTitle">
+
+               <label for="linkDescription">Description</label>
+               <input type="text" id="linkDescription" name="linkDescription">
+
+               <label for="contentFrom">From</label>
+               <input type="patextssword" id="contentFrom" name="contentFrom">
+
+
+               <button type="submit">Add Link</button>
+            </form>
+         </div>
+      </div>
    </div>
 
-   {{/each}}
 
-   <a href="/admin/collections">
-      <div id="add-new-collection" class="collection"> Add new collection ></div>
-   </a>
 
-</div>
+
+   <ul class="admin-links">
+      {{#each user.links}}
+
+      <div class="admin-link">
+         <li id={{this._id}} draggable="true">
+            <div>
+               {{this.linkTitle}}
+
+
+            </div>
+            <a href="#">Update Link</a>
+            <a href="/admin/links/{{this._id}}/delete">Remove Link</a>
+         </li>
+      </div>
+
+
+
+      {{/each}}
+   </ul>
+
+   <div class="linksPage">
+      <div class="addCollectionButton">
+         <h2>Add collection</h2>
+      </div>
+
+
+
+      {<div class="user-collections">
+
+         {{#each user.groups}}
+         <div id="{{this._id}}" class="collection drop-zone">
+            {{this.groupName}}
+            <p class="collection-admin-text">delete</p>
+         </div>
+
+         {{/each}}
+
+         <a href="/admin/collections">
+            <div id="add-new-collection" class="collection"> Add new collection ></div>
+         </a>
+
+      </div>
+   </div>

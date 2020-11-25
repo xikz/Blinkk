@@ -1,29 +1,62 @@
-<a href="/admin">Admin</a>
-<a href="/">View your Profile</a>
-<a href="/auth/logout" style="color: red">Log out</a>
-<br>
-<h1>Admin page
-</h1>
-<a href="/admin/links">My Links</a>
-<a href="/settings">User Settings</a>
-<a href="/appearance">Appearance</a>
-<a href="/admin/analytics">Analytics</a>
-<br><br>
-APPEAR PAGE
+<div class="homeNav">
 
-<h3>profile picture</h3>
+    <h1>Linkmee</h1>
+    <ul>
+        <li><a href="support/faqs">Help</a></li>
+        <a href="/">View your Profile</a>
+        <a href="/auth/logout">Log out</a>
+    </ul>
 
-<img src="{{foundUser.profilePic}}" style="width: 100px">
 
-<h1>{{foundUser.username}}</h1>
+</div>
+<nav class="adminNav">
+    <a href="/admin/links">My Links</a>
+    <a href="/settings">User Settings</a>
+    <a href="/appearance" class="menuNavBold">Appearance</a>
+    <a href="/admin/analytics">Analytics</a>
+</nav>
+<div class="appearancePage">
 
-<form method="POST" action="/appearance" enctype="multipart/form-data" style="width: 100px;">
-    <input type="file" name="imageUrl" accept="image/png, image/jpg">
-    <button type="submit">Submit</button>
-</form>
 
-{{#if errorMessage}}
-{{errorMessage}}
-{{/if}}
-<br>
-<button type="submit">Remove</button>
+    <h3>profile picture</h3>
+
+    <img src="{{foundUser.profilePic}}" style="width: 100px">
+
+    <h1>{{foundUser.username}}</h1>
+
+    <form method="POST" action="/appearance" enctype="multipart/form-data" style="width: 100px;">
+        <input type="file" name="imageUrl" accept="image/png, image/jpg">
+        <button type="submit">Submit</button>
+    </form>
+
+    {{#if errorMessage}}
+    {{errorMessage}}
+    {{/if}}
+    <br>
+    <button type="submit">Remove</button>
+</div>
+
+
+<footer class="footer">
+    <h3>Company</h3>
+    <ul>
+        <li><a href="info/about">About</a></li>
+        <li><a href="/">Press</a></li>
+        <li><a href="info/contact">Contact</a></li>
+        <li><a href="/">Linkme for business</a></li>
+        <li><a href="/">Linkme for charity</a></li>
+    </ul>
+    <h3>Support</h3>
+    <ul>
+        <li><a href="support/faqs">FAQs</a></li>
+        <li><a href="support/howto">How to?</a></li>
+        <li><a href="/">Getting Started?</a></li>
+        <li><a href="/">Help</a></li>
+        <li><a href="/">Report Violation</a></li>
+    </ul>
+    <h3>Legal</h3>
+    <ul>
+        <li><a href="/">Terms and conditions</a></li>
+        <li><a href="/">Privacy Policy</a></li>
+    </ul>
+</footer>

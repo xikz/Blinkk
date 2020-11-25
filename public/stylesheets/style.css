@@ -1,10 +1,151 @@
 body {
-  padding: 50px;
+  margin: -33px 0 0 0;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.homeNav {
+  display: flex;
+  flex-direction: row;
+  background-color: black;
+  color: white;
+  position: relative;
+  justify-content: space-between;
+}
+
+.homeNav ul {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  align-items: center;
+}
+
+.homeNav a {
+  color: white;
+  text-decoration: none;
+  padding-right: 10px;
+}
+
+.homeNav h1 {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.feature1 {
+  height: 780px;
+  background-color: rgb(182, 182, 182);
+}
+
+.feature2 {
+  height: 780px;
+  background-color: rgb(255, 126, 169);
+}
+
+.feature3 {
+  height: 780px;
+  background-color: rgb(101, 250, 146);
+}
+
+.footer {
+  margin-top: -33px;
+  background-color: black;
+  color: white;
+}
+
+/** auth styling **/
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 12px;
+  padding: 0px 40px;
+}
+
+.signup form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.admin {
+  background-color: red;
+}
+
+.linkForm form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settingsList {
+  height: 800px;
+  background-color: black;
+  padding-left: 30px;
+}
+
+.settingsList a {
+  color: white;
+  font-size: 35px;
+  text-decoration: none;
+}
+
+.adminNav {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(194, 194, 194);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminNav a {
+  margin: 0px 10px;
+  text-decoration: none;
+}
+
+.menuNavBold {
+  font-weight: 700;
+}
+
+.adminPage h2 {
+  font-size: 15px;
+}
+
+.analyticsPage {
+  height: 800px;
+}
+
+.appearancePage {
+  height: 800px;
+}
+
 a {
-  color: rgb(255, 36, 109);
+  color: rgb(36, 94, 255);
+  font-size: 15px;
 }
 
 h1 {
@@ -16,12 +157,59 @@ ul {
   padding: 0px;
   list-style: none;
 }
+.addinLinkTab {
+  background-color: rgb(238, 238, 238);
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 15px;
+  width: 92vw;
+  height: 280px;
+}
 
 .admin-link {
-  background-color: cornsilk;
+  background-color: rgb(238, 238, 238);
   padding: 10px;
-  margin: 10px 0px;
-  border-radius: 10px;
+  margin: 10px auto;
+  border-radius: 15px;
+  width: 92vw;
+  height: 70px;
+}
+.admin-link div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  height: 50px;
+}
+
+.admin-link a {
+  font-size: 12px;
+}
+
+.addLinkButton {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(60, 145, 255);
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 12px;
+  width: 91vw;
+  height: 40px;
+  color: rgb(255, 255, 255);
+  margin: 20px auto;
+}
+
+.addCollectionButton {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 12px;
+  width: 91vw;
+  height: 40px;
+  color: rgb(91, 107, 255);
+  margin: 20px auto;
 }
 
 .drop-zone {
@@ -37,7 +225,7 @@ ul {
 }
 
 .collection {
-  background-color: purple;
+  background-color: rgb(255, 178, 61);
   padding: 10px;
   margin: 10px;
 }
@@ -49,6 +237,5 @@ ul {
 }
 
 #add-new-collection {
-  background-color: grey;
 }
 /*# sourceMappingURL=style.css.map */

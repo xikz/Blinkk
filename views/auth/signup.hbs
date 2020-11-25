@@ -1,30 +1,33 @@
-<h1>Linkme</h1>
-<h2>Sign up to start using Linkme.</h2>
+<div class="signup">
+   <h1>Linkmee</h1>
+   <h2>Sign up to start using Linkme.</h2>
 
-<form action="/auth/signup" method="POST">
-   <label for="email"></label>
-   <input type="text" id="email" name="email" placeholder="email">
+   <form action="/auth/signup" method="POST">
+      <label for="email"></label>
+      <input type="text" id="email" name="email" placeholder="email">
+      <br>
+      <label for="username"></label>
+      <input type="text" id="username" name="username" placeholder="username">
+      <br>
+      <label for="password"></label>
+      <input type="password" id="password" name="password" placeholder="password">
+      <br>
+      {{#if errorMessage}}
+      {{errorMessage}}
+      {{/if}}
+      <p>Please enter at least 8 characters</p>
+      <button type="submit">Sign up</button>
+   </form>
    <br>
-   <label for="username"></label>
-   <input type="text" id="username" name="username" placeholder="username">
-   <br>
-   <label for="password"></label>
-   <input type="password" id="password" name="password" placeholder="password">
-   <br><br>
-   {{#if errorMessage}}
-   {{errorMessage}}
-   {{/if}}
-   <p>Please enter at least 8 characters</p>
-   <button type="submit">Sign up</button>
-</form>
-<br>
-or
-<h3>Have an account? <a href="/auth/login">Log in</a></h3>
+   or
+   <h3>Have an account? <a href="/auth/login">Log in</a></h3>
 
-<p>
-   By clicking on Sign up, you agree to Linkme's <a href="/">Terms and Conditions of Use.</a>
-   <br><br>
-   To learn more about how Mssive collects, uses, shares and protects your personal data please read Spotify's <a
-      href="/">Privacy
-      Policy.</a>
-</p>
+   <p>
+      By clicking on Sign up, you agree to Linkme's <a href="/">Terms and Conditions of Use.</a>
+      <br>
+      To learn more about how Mssive collects, uses, shares and protects
+      your personal data please read Spotify's <a href="/">Privacy Policy.</a>
+   </p>
+
+
+</div>

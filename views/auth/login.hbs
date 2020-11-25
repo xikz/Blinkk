@@ -1,23 +1,25 @@
-<h1>Linkme</h1>
-<h2>Log in to start using Linkme</h2>
-<form action="/auth/login" method="POST">
-   <label for="username"></label>
-   <input type="text" id="username" name="username" placeholder="username">
-   <br>
-   <label for="password"></label>
-   <input type="password" id="password" name="password" placeholder="password">
-   <br>
-   {{#if errorMessage}}
-   {{errorMessage}}
-   {{/if}}
-   <br>
-   <br>
-   <button type="submit">Submit</button>
-   <br>
+<div class="login">
+   <h1>Linkmee</h1>
+   <h2>Log in to start using Linkme</h2>
+   <form action="/auth/login" method="POST">
+      <label for="username"></label>
+      <input type="text" id="username" name="username" placeholder="username">
+      <br>
+      <label for="password"></label>
+      <input type="password" id="password" name="password" placeholder="password">
+      <br>
+      {{#if errorMessage}}
+      {{errorMessage}}
+      {{/if}}
+      <br>
+      <button type="submit">Submit</button>
+      <br>
 
-</form>
-<br>
-<a href="/">Forgot your password?</a>
-<hr>
-<h3>Don't have an account?</h3>
-<a href="/auth/signup">Sing up</a>
+   </form>
+   <br>
+   <a href="/">Forgot your password?</a>
+   <hr>
+   <h3>Don't have an account?</h3>
+   <a href="/auth/signup">Sing up</a>
+
+</div>

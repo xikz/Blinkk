@@ -1,15 +1,22 @@
-<a href="/admin">Admin</a>
-<a href="/">View your Profile</a>
-<a href="/auth/logout" style="color: red">Log out</a>
-<br>
-<h1>Admin page
-</h1>
-<a href="/admin/links">My Links</a>
-<a href="/settings">User Settings</a>
-<a href="/admin/appearance">Appearance</a>
-<a href="/admin/analytics">Analytics</a>
+<div class="homeNav">
+
+    <h1>Linkmee</h1>
+    <ul>
+        <li><a href="support/faqs">Help</a></li>
+        <a href="/">View your Profile</a>
+        <a href="/auth/logout">Log out</a>
+    </ul>
+
+
+</div>
+<nav class="adminNav">
+    <a href="/admin/links" class="menuNavBold">My Links</a>
+    <a href="/settings">User Settings</a>
+    <a href="/appearance">Appearance</a>
+    <a href="/admin/analytics">Analytics</a>
+</nav>
 <br><br>
-<h1>Links</h1>
+<h1>Collections</h1>
 <h2>Adding a new collection</h2>
 <form action="/admin/addcollection" method="POST">
 
