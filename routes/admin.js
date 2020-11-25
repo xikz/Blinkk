@@ -5,6 +5,7 @@ const isLoggedIn = require("../middlewares/isLoggedIn");
 const User = require("../models/User.model");
 const Group = require("../models/Group.model");
 const uploader = require("../config/cloudinary.config.js");
+const { response } = require("express");
 
 router.get("/", isLoggedIn, (req, res) => {
   let username = req.session.user.username;
@@ -19,8 +20,10 @@ router.get("/links", isLoggedIn, (req, res, next) => {
     .populate("links")
     .populate("groups")
     .then((user) => {
-      console.log(user.links[0]);
       user.links.sort((a, b) => a.order - b.order);
+      const links = user.links.filter((link) => link.status === "Unassigned");
+      const groups = user.groups;
+      user = { links, groups };
       res.render("admin/links", { user: user });
     });
 });
@@ -62,20 +65,56 @@ router.post("/addlink", isLoggedIn, (req, res, next) => {
     });
 });
 
+//IN COLLECTION PAGE //IN COLLECTION PAGE //IN COLLECTION PAGE
+router.get("/collection/:groupId/:linkId/delete", (req, res, next) => {
+  console.log("params:", req.params);
+
+  Link.findByIdAndRemove(req.params.linkId).then(() =>
+    res.redirect(`/admin/open-collection/${req.params.groupId}`)
+  );
+});
+
+//removing a link from a collection
+router.get(
+  "/collection/:groupId/:linkId/remove-link-from-collection",
+  (req, res) => {
+    console.log("params:", req.params);
+    Group.update(
+      { _id: req.params.groupId },
+      { $pull: { links: req.params.linkId } },
+      { new: true }
+    ).then((updatedGroup) => {
+      Link.findByIdAndUpdate(req.params.linkId, {
+        $set: { status: "Unassigned" },
+      }).then((updatedLink) => {
+        console.log(updatedLink);
+      });
+      res.redirect(`/admin/open-collection/${req.params.groupId}`);
+    });
+  }
+);
+
 router.get("/links/:_id/delete", (req, res, next) => {
   console.log(req.params);
   Link.findByIdAndRemove(req.params).then(() => res.redirect("/admin/links"));
 });
 
-router.put("/links", isLoggedIn, (req, res, next) => {});
-
-router.get("/collections", isLoggedIn, (req, res, next) => {
+router.get("/add-collection", isLoggedIn, (req, res, next) => {
   User.findById(req.session.user._id)
     .populate("groups")
     .then((user) => {
-      res.render("admin/collections", { user: user });
+      res.render("admin/add-collection", { user: user });
       console.log(user);
     });
+});
+
+router.get("/open-collection/:_id", (req, res) => {
+  console.log(req.params);
+
+  Group.findById(req.params)
+    .populate("links")
+    .then((resp) => res.render("admin/open-collection", { group: resp }))
+    .catch((err) => console.log(err));
 });
 
 router.post("/addcollection", isLoggedIn, (req, res, next) => {
@@ -97,7 +136,7 @@ router.post("/addcollection", isLoggedIn, (req, res, next) => {
         }
       ).then((updatedUser) => {
         console.log(updatedUser);
-        res.redirect("/admin/collections");
+        res.redirect("/admin/add-collection");
       });
     })
     .catch((err) => {

@@ -17,8 +17,10 @@
       <a href="/appearance">Appearance</a>
       <a href="/admin/analytics">Analytics</a>
    </nav>
+
    <div class="linksPage">
 
+      <h2>MY LINKS</h2>
       {{!-- <div class="addLinkButton">
          <h2>Add link ➕</h2>
       </div> --}}
@@ -35,63 +37,58 @@
                <label for="linkUrl">URL</label>
                <input type="text" id="linkUrl" name="linkUrl" , placeholder="facebook.com/DeNiro">
 
-               <label for="thumbnailUrl">image</label>
-               <input type="text" id="thumbnailUrl" name="thumbnailUrl">
-
                <label for="linkTitle">Title</label>
                <input type="text" id="linkTitle" name="linkTitle">
 
-               <label for="linkDescription">Description</label>
+               {{!-- <label for="linkDescription">Description</label>
                <input type="text" id="linkDescription" name="linkDescription">
 
                <label for="contentFrom">From</label>
                <input type="patextssword" id="contentFrom" name="contentFrom">
 
+                <label for="thumbnailUrl">image</label>
+               <input type="text" id="thumbnailUrl" name="thumbnailUrl"> --}}
+
                <button type="submit">Add Link</button>
             </form>
          </div>
       </div>
-   </div>
-
-
-   <ul class="admin-links">
-      {{#each user.links}}
-
-
-      <li id={{this._id}} class="admin-link" draggable="true">
-         <div class="admin-link-name">{{this.linkTitle}}</div>
-         <div class="admin-link-updates">
-            <a href="#">Update Link</a>
-            <a href="/admin/links/{{this._id}}/delete">Remove Link</a>
-         </div>
-      </li>
 
 
 
+      <ul class="admin-links">
+         {{#each user.links}}
+         {{#if this.status}}
+         <li id={{this._id}} class="admin-link" draggable="true">
+            <div class="admin-link-name">{{this.linkTitle}}</div>
+            <div class="admin-link-updates">
+               <a href="#">Update</a>
+               <a href="/admin/links/{{this._id}}/delete">Delete</a>
+            </div>
+         </li>
+         {{/if}}
+         {{/each}}
+      </ul>
 
-      {{/each}}
-   </ul>
-
-
-   <div class="addCollectionButton">
-      <h2>User collections</h2>
-   </div>
-
-   <div class="user-collections">
-
-      {{#each user.groups}}
-      <div id="{{this._id}}" class="collection drop-zone">
-         {{this.groupName}}
-         <p class="collection-admin-text">delete</p>
+      <div class="addCollectionButton">
+         <h2>User collections</h2>
       </div>
 
-      {{/each}}
+      <div class="user-collections">
 
-      <a href="/admin/collections">
-         <div id="add-new-collection" class="collection"> Add new collection ></div>
-      </a>
+         {{#each user.groups}}
+         <a href="/admin/open-collection/{{this._id}}">
+            <div id="{{this._id}}" class="collection drop-zone">
+               {{this.groupName}}
+            </div>
+         </a>
+         {{/each}}
 
+         <a href="/admin/add-collection">
+            <div id="add-new-collection" class="collection"> Add new collection ></div>
+         </a>
+
+      </div>
    </div>
-</div>
 
-<script src="/javascripts/script.js"></script>
+   <script src="/javascripts/script.js"></script>

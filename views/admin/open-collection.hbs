@@ -1,0 +1,38 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<div class="adminPage">
+    <div class="homeNav">
+
+        <h1>linkmee</h1>
+        <ul>
+            {{!-- <li><a href="support/faqs">Help</a></li> --}}
+            <a href="/{{username}}">Profile</a>
+            <a href="/auth/logout">Log out</a>
+        </ul>
+
+    </div>
+    <nav class="adminNav">
+        <a href="/admin/links" class="menuNavBold">My Links</a>
+        <a href="/settings">User Settings</a>
+        <a href="/appearance">Appearance</a>
+        <a href="/admin/analytics">Analytics</a>
+    </nav>
+    <div class="linksPage">
+        <h2>COLLECTION PAGE</h2>
+        <h3><a href="/admin/links">
+                <- BACK</a>
+        </h3>
+
+        <h2>{{group.groupName}}</h2>
+        {{#each group.links}}
+        <div class="admin-link">{{this.linkTitle}}
+            <div>
+                <a href="/admin/collection/{{../group._id}}/{{this._id}}/remove-link-from-collection">remove from
+                    category</a>
+                <a href="/admin/collection/{{../group._id}}/{{this._id}}/delete">delete</a>
+            </div>
+        </div>
+        {{/each}}
+
+
+    </div>
