@@ -1,3 +1,7 @@
+axios.get("/api").then((resp) => {
+  console.log(resp);
+});
+
 document.addEventListener(
   "DOMContentLoaded",
   () => {
@@ -9,10 +13,11 @@ document.addEventListener(
 //DRAG AND DROP BETWEEN LINKS
 let currentDrag = null;
 
-const ul = document.querySelector(".admin-links");
+let ul = document.querySelector(".admin-links");
 //ul.innerHTML = `<h1>Help</h1>`;
 console.log(ul);
-const adminLinks = document.querySelectorAll(".admin-links li");
+let adminLinks = document.querySelectorAll(".admin-links li");
+console.log(adminLinks);
 const instagram = adminLinks[1];
 console.log(instagram);
 
@@ -25,45 +30,92 @@ draggableLinks.forEach((link) => {
     // e.target.dataTransfer.setData("text/plain", link.id);
     e.dataTransfer.setData("text/plain", link.id);
   });
-});
 
-instagram.addEventListener("dragover", (e) => {
-  e.preventDefault();
-  instagram.classList.add("drop-zone--over");
-});
-
-instagram.addEventListener("dragleave", (e) => {
-  e.preventDefault();
-  instagram.classList.remove("drop-zone--over");
-});
-
-instagram.addEventListener("drop", (e) => {
-  e.preventDefault();
-  const droppableLinkId = e.dataTransfer.getData("text/plain");
-  console.log(e.target.innerText);
-  console.log(droppableLinkId);
-  console.log(instagram.id);
-
-  const realAdminLinks = [...adminLinks];
-
-  console.log(currentDrag.id);
-  console.log(e.target.id);
-  const prevIndex = realAdminLinks.findIndex((el) => el.id === currentDrag.id);
-  realAdminLinks.splice(prevIndex, 1);
-  const currentIndex = realAdminLinks.findIndex(
-    (event) => event.id === instagram.id
-  );
-  realAdminLinks.splice(currentIndex + 1, 0, currentDrag);
-  //const newOrder = realAdminLinks.filter((el, _, a) => )
-
-  // console.log(realAdminLinks.map((e) => e.innerHTML));
-  //ul.innerHTML = realAdminLinks.join("");
-  ul.innerHTML = "";
-  realAdminLinks.forEach((el) => {
-    ul.appendChild(el);
+  link.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    link.classList.add("drop-zone--over");
   });
-  instagram.classList.remove("drop-zone--over");
+
+  link.addEventListener("dragleave", (e) => {
+    e.preventDefault();
+    link.classList.remove("drop-zone--over");
+  });
+
+  link.addEventListener("drop", (e) => {
+    e.preventDefault();
+    const droppableLinkId = e.dataTransfer.getData("text/plain");
+    console.log(e.target.innerText);
+    console.log(droppableLinkId);
+    console.log(link.id);
+
+    const realAdminLinks = [...adminLinks];
+
+    console.log(currentDrag.id);
+    console.log(e.target.id);
+
+    const prevIndex = realAdminLinks.findIndex(
+      (el) => el.id === currentDrag.id
+    );
+    realAdminLinks.splice(prevIndex, 1);
+    const currentIndex = realAdminLinks.findIndex(
+      (event) => event.id === link.id
+    );
+    realAdminLinks.splice(currentIndex + 1, 0, currentDrag);
+    //const newOrder = realAdminLinks.filter((el, _, a) => )
+
+    // console.log(realAdminLinks.map((e) => e.innerHTML));
+    //ul.innerHTML = realAdminLinks.join("");
+    ul.innerHTML = "";
+    realAdminLinks.forEach((el) => {
+      ul.appendChild(el);
+    });
+    ul = document.querySelector(".admin-links");
+    adminLinks = document.querySelectorAll(".admin-links li");
+    const newOrderLinks = [...adminLinks].map((e) => e.id);
+    axios.post("/api/new-order", newOrderLinks).then((resp) => {
+      console.log(resp);
+    });
+    link.classList.remove("drop-zone--over");
+  });
 });
+
+// instagram.addEventListener("dragover", (e) => {
+//   e.preventDefault();
+//   instagram.classList.add("drop-zone--over");
+// });
+
+// instagram.addEventListener("dragleave", (e) => {
+//   e.preventDefault();
+//   instagram.classList.remove("drop-zone--over");
+// });
+
+// instagram.addEventListener("drop", (e) => {
+//   e.preventDefault();
+//   const droppableLinkId = e.dataTransfer.getData("text/plain");
+//   console.log(e.target.innerText);
+//   console.log(droppableLinkId);
+//   console.log(instagram.id);
+
+//   const realAdminLinks = [...adminLinks];
+
+//   console.log(currentDrag.id);
+//   console.log(e.target.id);
+//   const prevIndex = realAdminLinks.findIndex((el) => el.id === currentDrag.id);
+//   realAdminLinks.splice(prevIndex, 1);
+//   const currentIndex = realAdminLinks.findIndex(
+//     (event) => event.id === instagram.id
+//   );
+//   realAdminLinks.splice(currentIndex + 1, 0, currentDrag);
+//   //const newOrder = realAdminLinks.filter((el, _, a) => )
+
+//   // console.log(realAdminLinks.map((e) => e.innerHTML));
+//   //ul.innerHTML = realAdminLinks.join("");
+//   ul.innerHTML = "";
+//   realAdminLinks.forEach((el) => {
+//     ul.appendChild(el);
+//   });
+//   instagram.classList.remove("drop-zone--over");
+// });
 
 // for (draggableLink of draggableLinks) {
 //   draggableLink.addEventListener("dragstart", (e) => {
@@ -96,4 +148,6 @@ dropZone.addEventListener("drop", (e) => {
   console.log(e.target.innerText);
   console.log("droppableLinkId:", droppableLinkId);
   dropZone.classList.remove("drop-zone--over");
+
+  //Axios.post("/")
 });

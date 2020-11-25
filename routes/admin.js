@@ -19,8 +19,9 @@ router.get("/links", isLoggedIn, (req, res, next) => {
     .populate("links")
     .populate("groups")
     .then((user) => {
+      console.log(user.links[0]);
+      user.links.sort((a, b) => a.order - b.order);
       res.render("admin/links", { user: user });
-      console.log(user);
     });
 });
 
