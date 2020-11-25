@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <div class="adminPage">
    <div class="homeNav">
 
@@ -17,9 +19,10 @@
       <a href="/admin/analytics">Analytics</a>
    </nav>
    <div class="linksPage">
-      <div class="addLinkButton">
+
+      {{!-- <div class="addLinkButton">
          <h2>Add link ➕</h2>
-      </div>
+      </div> --}}
 
 
       <div class="addinLinkTab">
@@ -31,7 +34,7 @@
             <form action="/admin/addlink" method="POST">
 
                <label for="linkUrl">URL</label>
-               <input type="text" id="linkUrl" name="linkUrl" , placeholder="Paste URL">
+               <input type="text" id="linkUrl" name="linkUrl" , placeholder="facebook.com/DeNiro">
 
                <label for="thumbnailUrl">image</label>
                <input type="text" id="thumbnailUrl" name="thumbnailUrl">
@@ -45,44 +48,36 @@
                <label for="contentFrom">From</label>
                <input type="patextssword" id="contentFrom" name="contentFrom">
 
-
                <button type="submit">Add Link</button>
             </form>
          </div>
       </div>
-   </div>
 
 
+      <ul class="admin-links">
+         {{#each user.links}}
 
 
-   <ul class="admin-links">
-      {{#each user.links}}
-
-      <div class="admin-link">
-         <li id={{this._id}} draggable="true">
-            <div>
-               {{this.linkTitle}}
-
-
+         <li id={{this._id}} class="admin-link" draggable="true">
+            <div class="admin-link-name">{{this.linkTitle}}</div>
+            <div class="admin-link-updates">
+               <a href="#">Update Link</a>
+               <a href="/admin/links/{{this._id}}/delete">Remove Link</a>
             </div>
-            <a href="#">Update Link</a>
-            <a href="/admin/links/{{this._id}}/delete">Remove Link</a>
          </li>
-      </div>
 
 
 
-      {{/each}}
-   </ul>
 
-   <div class="linksPage">
+         {{/each}}
+      </ul>
+
+
       <div class="addCollectionButton">
-         <h2>Add collection</h2>
+         <h2>User collections</h2>
       </div>
 
-
-
-      {<div class="user-collections">
+      <div class="user-collections">
 
          {{#each user.groups}}
          <div id="{{this._id}}" class="collection drop-zone">
@@ -98,3 +93,5 @@
 
       </div>
    </div>
+
+   <script src="/javascripts/script.js"></script>

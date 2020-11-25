@@ -162,24 +162,33 @@ ul {
   padding: 10px;
   margin: 10px auto;
   border-radius: 15px;
-  width: 92vw;
+
   height: 280px;
 }
 
-.admin-link {
-  background-color: rgb(238, 238, 238);
-  padding: 10px;
-  margin: 10px auto;
-  border-radius: 15px;
-  width: 92vw;
-  height: 70px;
+.linksPage {
+  width: 90vw;
+  margin: 0px auto;
 }
-.admin-link div {
+
+.admin-link {
+  background-color: cornsilk;
+  padding: 5px 10px;
+  margin: 5px 0px;
+  border-radius: 15px;
+  height: 20px;
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-self: center;
-  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-link-name {
+  display: flex;
+  align-items: center;
+}
+.admin-link-updates {
+  display: flex;
+  align-items: center;
 }
 
 .admin-link a {
@@ -193,7 +202,7 @@ ul {
   padding: 10px;
   margin: 10px auto;
   border-radius: 12px;
-  width: 91vw;
+
   height: 40px;
   color: rgb(255, 255, 255);
   margin: 20px auto;
@@ -206,7 +215,6 @@ ul {
   padding: 10px;
   margin: 10px auto;
   border-radius: 12px;
-  width: 91vw;
   height: 40px;
   color: rgb(91, 107, 255);
   margin: 20px auto;
