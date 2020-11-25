@@ -7,7 +7,10 @@ const Group = require("../models/Group.model");
 const uploader = require("../config/cloudinary.config.js");
 
 router.get("/", isLoggedIn, (req, res) => {
-  res.render("admin/links");
+  let username = req.session.user.username;
+  console.log("Username", username);
+
+  res.render("admin/links", { username });
 });
 
 //*Must to be logged in

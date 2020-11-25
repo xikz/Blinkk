@@ -236,6 +236,32 @@ ul {
   font-size: 0.5em;
 }
 
+/** User profile styling **/
+
+.userProfileIntro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.userProfileIntro img {
+  width: 120px;
+  border-radius: 50%;
+}
+
+.userProfileIntro h1 {
+  margin-bottom: -2px;
+  font-size: 1.5em;
+}
+
+.userProfileIntro h3 {
+  margin-bottom: -2px;
+  font-size: 0.9em;
+  width: 70vw;
+  text-align: center;
+}
+
 #add-new-collection {
 }
 /*# sourceMappingURL=style.css.map */

@@ -48,7 +48,7 @@ const supportRoutes = require("./routes/support");
 const infoRoutes = require("./routes/info");
 const settingsRoutes = require("./routes/settings");
 const appearanceRoutes = require("./routes/appearance");
-const profileRoutes = require("./routes/profilePage");
+const profileRoutes = require("./routes/profile-page");
 
 app.use("/", index);
 app.use("/auth", authRoutes);
@@ -56,7 +56,7 @@ app.use("/admin", adminRoutes);
 app.use("/support", supportRoutes);
 app.use("/info", infoRoutes);
 app.use("/settings", settingsRoutes);
-app.use("/profilePage", profileRoutes);
+app.use("/", profileRoutes);
 app.use("/appearance", appearanceRoutes);
 
 // ❗ To handle errors. Routes that dont exist or errors that you handle in specfic routes
