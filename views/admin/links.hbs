@@ -24,7 +24,7 @@
       </div> --}}
 
 
-      {{!-- <div class="addinLinkTab">
+      <div class="addinLinkTab">
 
 
          <h2>Adding Link</h2>
@@ -50,52 +50,48 @@
                <button type="submit">Add Link</button>
             </form>
          </div>
-<<<<<<< HEAD
-      </div> --}}
+      </div>
    </div>
-=======
-      </div>
->>>>>>> b446ce29e4c6282e2ce440150e550ee75dfd545a
 
 
-      <ul class="admin-links">
-         {{#each user.links}}
+   <ul class="admin-links">
+      {{#each user.links}}
 
 
-         <li id={{this._id}} class="admin-link" draggable="true">
-            <div class="admin-link-name">{{this.linkTitle}}</div>
-            <div class="admin-link-updates">
-               <a href="#">Update Link</a>
-               <a href="/admin/links/{{this._id}}/delete">Remove Link</a>
-            </div>
-         </li>
-
-
-
-
-         {{/each}}
-      </ul>
-
-
-      <div class="addCollectionButton">
-         <h2>User collections</h2>
-      </div>
-
-      <div class="user-collections">
-
-         {{#each user.groups}}
-         <div id="{{this._id}}" class="collection drop-zone">
-            {{this.groupName}}
-            <p class="collection-admin-text">delete</p>
+      <li id={{this._id}} class="admin-link" draggable="true">
+         <div class="admin-link-name">{{this.linkTitle}}</div>
+         <div class="admin-link-updates">
+            <a href="#">Update Link</a>
+            <a href="/admin/links/{{this._id}}/delete">Remove Link</a>
          </div>
+      </li>
 
-         {{/each}}
 
-         <a href="/admin/collections">
-            <div id="add-new-collection" class="collection"> Add new collection ></div>
-         </a>
 
-      </div>
+
+      {{/each}}
+   </ul>
+
+
+   <div class="addCollectionButton">
+      <h2>User collections</h2>
    </div>
 
-   <script src="/javascripts/script.js"></script>
+   <div class="user-collections">
+
+      {{#each user.groups}}
+      <div id="{{this._id}}" class="collection drop-zone">
+         {{this.groupName}}
+         <p class="collection-admin-text">delete</p>
+      </div>
+
+      {{/each}}
+
+      <a href="/admin/collections">
+         <div id="add-new-collection" class="collection"> Add new collection ></div>
+      </a>
+
+   </div>
+</div>
+
+<script src="/javascripts/script.js"></script>
