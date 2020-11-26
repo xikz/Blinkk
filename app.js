@@ -57,9 +57,9 @@ app.use("/admin", adminRoutes);
 app.use("/support", supportRoutes);
 app.use("/info", infoRoutes);
 app.use("/settings", settingsRoutes);
-app.use("/", profileRoutes);
 app.use("/appearance", appearanceRoutes);
 app.use("/api", apiAdminRoutes);
+app.use("/", profileRoutes);
 
 // ❗ To handle errors. Routes that dont exist or errors that you handle in specfic routes
 require("./error-handling")(app);
