@@ -4,13 +4,29 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.homepageNav {
+  display: flex;
+  position: fixed;
+  flex-direction: row;
+  background-color: rgba(255, 255, 255, 0);
+  /* border-bottom: 1px solid rgb(201, 201, 201); */
+  color: white;
+  justify-content: space-between;
+  margin-top: -1px;
+  width: 100vw;
+  padding: 0px 12px;
+}
+
 .homeNav {
   display: flex;
-  flex-direction: row;
-  background-color: black;
-  color: white;
   position: relative;
+  flex-direction: row;
+  background-color: rgb(255, 255, 255);
+  /* border-bottom: 1px solid rgb(201, 201, 201); */
+  color: rgb(0, 0, 0);
   justify-content: space-between;
+  margin-top: -1px;
+  width: 100vw;
 }
 
 .homeNav ul {
@@ -21,37 +37,87 @@ body {
 }
 
 .homeNav a {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   padding-right: 10px;
 }
 
 .homeNav h1 {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
   font-size: 20px;
   padding-left: 10px;
 }
 
 .feature1 {
-  height: 780px;
-  background-color: rgb(182, 182, 182);
+  height: 700px;
+  background-color: rgb(255, 255, 255);
+  margin-top: -90px;
+  font-size: 17px;
+}
+
+.signUpButton {
+  text-decoration: none;
+  font-size: 13px;
+  background-color: rgb(104, 104, 206);
+  height: 30px;
+  color: white;
+  width: 90px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.learnMore {
+  text-decoration: underline;
+  font-size: 13px;
+}
+
+.feature1 h2 {
+  width: 80vw;
+  text-align: center;
+  font-size: 15px;
+  margin-top: -5px;
+}
+
+.feature1 h3 {
+  width: 60vw;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .feature2 {
-  height: 780px;
+  height: 700px;
   background-color: rgb(255, 126, 169);
 }
 
 .feature3 {
-  height: 780px;
+  height: 700px;
   background-color: rgb(101, 250, 146);
 }
 
+/** footer styling **/
 .footer {
   margin-top: -33px;
+  padding: 30px 0px 0px 20px;
   background-color: black;
   color: white;
+}
+
+.footer h3 {
+  color: grey;
+  padding-top: 25px;
+}
+
+.footer a {
+  text-decoration: none;
+  color: white;
+  font-size: 12px;
+  line-height: 3;
+  padding-left: 15px;
 }
 
 /** auth styling **/
@@ -60,6 +126,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px 15px;
+  background-color: rgb(248, 248, 248);
+  height: 100vh;
 }
 
 .login form {
@@ -68,10 +137,91 @@ body {
   align-items: center;
 }
 
+.login h1 {
+  font-size: 35px;
+}
+
+.login h2 {
+  font-size: 40px;
+}
+
+.login input {
+  width: 88vw;
+  height: 50px;
+  border-radius: 11px;
+  border: 0.6px solid rgb(207, 207, 207);
+  padding-left: 20px;
+}
+
+.loginLogo {
+  text-decoration: none;
+}
+
+.login button {
+  margin-top: 30px;
+  width: 220px;
+  height: 40px;
+  border-radius: 14px;
+  background-color: rgb(97, 134, 255);
+  border: none;
+  color: white;
+  font-size: 18px;
+}
+
 .signup {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px 15px;
+  background-color: rgb(248, 248, 248);
+  height: 100vh;
+}
+
+.signup hr {
+  width: 80vw;
+  margin-bottom: 20px;
+}
+
+.signup h2 {
+  text-align: center;
+  font-size: 29px;
+  margin-bottom: 50px;
+}
+
+.signup h1 {
+  font-size: 35px;
+}
+
+.signup input {
+  width: 88vw;
+  height: 50px;
+  border-radius: 11px;
+  border: 0.6px solid rgb(207, 207, 207);
+  padding-left: 20px;
+}
+
+/* .signUpDiv {
+  background-color: white;
+} */
+
+/* .signup :placeholder-shown {
+  color: red;
+} */
+
+input::placeholder {
+  color: black;
+  font-size: 15px;
+}
+
+.signup button {
+  margin-top: 30px;
+  width: 220px;
+  height: 40px;
+  border-radius: 14px;
+  background-color: rgb(97, 134, 255);
+  border: none;
+  color: white;
+  font-size: 18px;
 }
 
 .signup p {
@@ -83,11 +233,21 @@ body {
   padding: 0px 40px;
 }
 
+.signup a {
+  display: inline;
+}
+
 .signup form {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+.signupError {
+  color: rgb(255, 116, 116);
+  font-size: 24px;
+  padding-bottom: 5px;
 }
 
 .admin {
@@ -120,6 +280,37 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.adminNavAdminLinks {
+  background-color: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(194, 194, 194);
+  border-top: 1px solid rgb(194, 194, 194);
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.adminNavAdminLinks a {
+  margin: 0px 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.linkForm input {
+  margin-top: 5px;
+  width: 80vw;
+  height: 20px;
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+  border: 1px solid rgb(158, 158, 158);
+}
+
+.linkForm button {
+  border: none;
 }
 
 .adminNav a {
@@ -165,24 +356,32 @@ ul {
 }
 
 .linksPage {
-  width: 90vw;
+  width: 92vw;
   margin: 0px auto;
 }
 
+.linksPage h2 {
+}
+
 .admin-link {
-  background-color: cornsilk;
-  padding: 5px 10px;
-  margin: 5px 0px;
+  background-color: rgb(223, 223, 223);
+  /* padding: 5px 0px; */
+  margin: 10px 0px;
   border-radius: 15px;
-  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.144);
+  height: 55px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .admin-link-name {
   display: flex;
   align-items: center;
+  font-size: 16px;
+  font-weight: 700;
 }
 .admin-link-updates {
   display: flex;
@@ -191,19 +390,18 @@ ul {
 
 .admin-link a {
   font-size: 12px;
+  text-decoration: none;
 }
 
 .addLinkButton {
   display: flex;
   justify-content: center;
+  align-items: center;
   background-color: rgb(60, 145, 255);
-  padding: 10px;
-  margin: 10px auto;
   border-radius: 12px;
-
-  height: 40px;
+  height: 50px;
   color: rgb(255, 255, 255);
-  margin: 20px auto;
+  margin: 35px auto;
 }
 
 .addCollectionButton {
@@ -228,12 +426,26 @@ ul {
 
 .user-collections {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30px auto;
+}
+
+.user-collections a {
+  color: black;
+  text-decoration: none;
 }
 
 .collection {
-  background-color: rgb(255, 178, 61);
-  padding: 10px;
-  margin: 10px;
+  background-color: white;
+  padding: 13px 20px;
+  margin: 5px;
+  color: black;
+  text-decoration: none;
+  border: 0.5px rgba(194, 194, 194, 0.541) solid;
+  border-radius: 23px;
+  font-weight: 400;
 }
 
 .collection-admin-text {
@@ -340,6 +552,10 @@ ul {
   width: 97vw;
 }
 
+#add-new-collection {
+  background-color: rgba(194, 194, 194, 0.541);
+}
+
 .menuButton {
   background-color: white;
   width: 50px;
@@ -353,6 +569,14 @@ ul {
   text-decoration: none;
   color: black;
 }
+
+.feature1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 #add-new-collection {
 }
 /*# sourceMappingURL=style.css.map */

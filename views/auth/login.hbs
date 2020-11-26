@@ -1,18 +1,25 @@
 <div class="login">
-   <h1>Linkmee</h1>
-   <h2>Log in to start using Linkme</h2>
+   <a class="loginLogo" href="/">
+      <h1>🔗</h1>
+   </a>
+   <h2>Please sign in.</h2>
    <form action="/auth/login" method="POST">
       <label for="username"></label>
       <input type="text" id="username" name="username" placeholder="username">
       <br>
       <label for="password"></label>
       <input type="password" id="password" name="password" placeholder="password">
+      {{!-- <label>
+         <input type="checkbox" checked="checked" name="remember"> Remember me --}}
+      </label>
       <br>
       {{#if errorMessage}}
       {{errorMessage}}
       {{/if}}
+
       <br>
-      <button type="submit">Submit</button>
+      <button type="submit">Sign in</button>
+
       <br>
 
    </form>
@@ -21,5 +28,7 @@
    <hr>
    <h3>Don't have an account?</h3>
    <a href="/auth/signup">Sing up</a>
-
+   <p>
+      Copyright © 2020 Blink All Rights Reserved.
+   </p>
 </div>

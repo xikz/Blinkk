@@ -3,44 +3,48 @@
 <div class="adminPage">
    <div class="homeNav">
 
-      <h1>linkmee</h1>
+      <h1>🔗</h1>
       <ul>
          {{!-- <li><a href="support/faqs">Help</a></li> --}}
-         <a href="/{{username}}">Profile</a>
+         <a href="/{{user.user.username}}">Profile</a>
          <a href="/auth/logout">Log out</a>
       </ul>
 
    </div>
-   <nav class="adminNav">
+   <nav class="adminNavAdminLinks">
       <a href="/admin/links" class="menuNavBold">My Links</a>
       <a href="/settings">User Settings</a>
-      <a href="/appearance">Appearance</a>
+      <a href="/admin/appearance">Appearance</a>
       <a href="/admin/analytics">Analytics</a>
    </nav>
-
-   <div class="linksPage">
-
-      <h2>MY LINKS</h2>
-      {{!-- <div class="addLinkButton">
-         <h2>Add link ➕</h2>
-      </div> --}}
+   <div class="linksBg">
 
 
-      <div class="addinLinkTab">
+      <div class="linksPage">
+
+         {{!-- <h2>MY LINKS</h2> --}}
+         <div class="addLinkButton">
+            <h2>Add link ➕</h2>
+         </div>
 
 
-         <h2>Adding Link</h2>
+         <div class="addinLinkTab">
 
-         <div class="linkForm">
-            <form action="/admin/addlink" method="POST">
 
-               <label for="linkUrl">URL</label>
-               <input type="text" id="linkUrl" name="linkUrl" , placeholder="facebook.com/DeNiro">
+            {{!-- <h2>Adding Link</h2> --}}
 
-               <label for="linkTitle">Title</label>
-               <input type="text" id="linkTitle" name="linkTitle">
+            <div class="linkForm">
+               <form action="/admin/addlink" method="POST">
 
-               {{!-- <label for="linkDescription">Description</label>
+                  <label for="linkTitle"></label>
+                  <input type="text" id="linkTitle" name="linkTitle" placeholder="Enter title">
+
+                  <label for="linkUrl"></label>
+                  <input type="text" id="linkUrl" name="linkUrl" placeholder="http://url">
+
+
+
+                  {{!-- <label for="linkDescription">Description</label>
                <input type="text" id="linkDescription" name="linkDescription">
 
                <label for="contentFrom">From</label>
@@ -49,46 +53,52 @@
                 <label for="thumbnailUrl">image</label>
                <input type="text" id="thumbnailUrl" name="thumbnailUrl"> --}}
 
-               <button type="submit">Add Link</button>
-            </form>
+                  <button type="submit">Add Link</button>
+               </form>
+            </div>
+         </div>
+
+
+
+         <ul class="admin-links">
+            {{#each user.links}}
+            {{#if this.status}}
+            <li id={{this._id}} class="admin-link" draggable="true">
+               <div class="admin-link-name">{{this.linkTitle}}</div>
+               <div class="admin-link-updates">
+                  <a href="#">Update</a>
+                  <a href="/admin/links/{{this._id}}/delete">Delete</a>
+               </div>
+            </li>
+            {{/if}}
+            {{/each}}
+         </ul>
+
+         {{!-- <div class="addCollectionButton">
+         <h2>User collections</h2>
+      </div> --}}
+
+
+
+         <div class="user-collections">
+
+            <a href="/admin/add-collection">
+               <div id="add-new-collection" class="collection"> Add new collection </div>
+            </a>
+
+            {{#each user.groups}}
+            <a href="/admin/open-collection/{{this._id}}">
+               <div id="{{this._id}}" class="collection drop-zone">
+                  {{this.groupName}}
+               </div>
+            </a>
+            {{/each}}
+
+
+
          </div>
       </div>
 
-
-
-      <ul class="admin-links">
-         {{#each user.links}}
-         {{#if this.status}}
-         <li id={{this._id}} class="admin-link" draggable="true">
-            <div class="admin-link-name">{{this.linkTitle}}</div>
-            <div class="admin-link-updates">
-               <a href="#">Update</a>
-               <a href="/admin/links/{{this._id}}/delete">Delete</a>
-            </div>
-         </li>
-         {{/if}}
-         {{/each}}
-      </ul>
-
-      <div class="addCollectionButton">
-         <h2>User collections</h2>
-      </div>
-
-      <div class="user-collections">
-
-         {{#each user.groups}}
-         <a href="/admin/open-collection/{{this._id}}">
-            <div id="{{this._id}}" class="collection drop-zone">
-               {{this.groupName}}
-            </div>
-         </a>
-         {{/each}}
-
-         <a href="/admin/add-collection">
-            <div id="add-new-collection" class="collection"> Add new collection ></div>
-         </a>
-
-      </div>
    </div>
 
    <script src="/javascripts/script.js"></script>

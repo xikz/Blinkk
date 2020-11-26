@@ -23,7 +23,8 @@ router.get("/links", isLoggedIn, (req, res, next) => {
       user.links.sort((a, b) => a.order - b.order);
       const links = user.links.filter((link) => link.status === "Unassigned");
       const groups = user.groups;
-      user = { links, groups };
+      user = { user, links, groups };
+      console.log("VISITING LINKS PAGE", user);
       res.render("admin/links", { user: user });
     });
 });

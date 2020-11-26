@@ -6,7 +6,10 @@ const mongoose = require("mongoose");
 const isLoggedIn = require("../middlewares/isLoggedIn");
 
 router.get("/", isLoggedIn, (req, res) => {
-  res.render("sett/settings");
+  let username = req.session.user.username;
+  console.log("Username", username);
+
+  res.render("sett/settings", { username });
 });
 
 router.get("/privacy", isLoggedIn, (req, res) => {
