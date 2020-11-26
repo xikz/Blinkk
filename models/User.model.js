@@ -17,7 +17,11 @@ const userSchema = new Schema({
 
   location: { type: String },
   bio: { type: String },
-  profilePic: { type: String, default: "" },
+  profilePic: {
+    type: String,
+    default:
+      "https://cdn.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png",
+  },
   links: [
     {
       type: mongoose.Schema.Types.ObjectId,

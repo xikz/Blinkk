@@ -1,19 +1,17 @@
-This collection page
-
-{{!-- <div class="menuButton">
+<div class="menuButton">
     <button type="button"><a href="/admin/links">Home</a></button>
-</div> --}}
+</div>
 
-{{!-- <div class="userProfileIntro">
-    <img src="{{user.profilePic}}">
-    <h1>@{{user.username}}</h1>
-    <h3>{{user.bio}}</h3>
+<div class="userProfileIntro">
+    <img src="{{object.profilePic}}">
+    <h1>@{{object.username.username}}</h1>
+    <h3>{{object.bio}}</h3>
 </div>
 
 <div class="userProfileLink">
     <div class="collections">
-        {{#each groups.groups as |group|}}
-        <a href="/{{../user.username}}/{{group._id}}">
+        {{#each object.groups as |group|}}
+        <a href="/{{../object.username.username}}/{{group._id}}">
             <div class="collectionContainer">
                 <h2>{{group.groupName}}</h2>
             </div>
@@ -22,12 +20,12 @@ This collection page
     </div>
 
 
-    {{#each userLinks.links as |link|}}
+    {{#each object.links as |link|}}
     <a href="{{link.linkUrl}}">
         <div class="linkContainer">
             <h2>{{link.linkTitle}}</h2>
         </div>
     </a>
-    {{/each}} --}}
+    {{/each}}
 
 </div>

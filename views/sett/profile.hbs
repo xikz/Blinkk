@@ -1,9 +1,9 @@
 <div class="homeNav">
 
-    <h1>Linkmee</h1>
+    <h1>Blink</h1>
     <ul>
         <li><a href="support/faqs">Help</a></li>
-        <a href="/">View your Profile</a>
+        <a href="/{{username}}">View your Profile</a>
         <a href="/auth/logout">Log out</a>
     </ul>
 
@@ -11,44 +11,70 @@
 </div>
 
 <nav class="adminNav">
-    <a href="/admin/links">My Links</a>
-    <a href="/settings">User Settings</a>
+    <a href="/admin/links">Settings</a>
     <a href="/appearance">Appearance</a>
-    <a href="/admin/analytics" class="menuNavBold">Analytics</a>
+    <a href="/admin/analytics" class="menuNavBold">Appearance</a>
 </nav>
 
 
-<h1>Edit your profile</h1>
 
 
+<div class="editProfile">
+    <form action="/settings/upload" method="POST">
+        <h1>Edit your profile</h1>
+        <h2>Username</h2>
 
-<form action="/settings/upload" method="POST">
+        <label for="username"></label>
+        <input type="text" id="username" name="username" value="{{foundUser.username}}"
+            placeholder="{{foundUser.username}}">
 
-    <h3>Username</h3>
+        <h2>Email</h2>
 
-    <label for="username"></label>
-    <input type="text" id="username" name="username" value="{{foundUser.username}}"
-        placeholder="{{foundUser.username}}">
-
-    <h3>Email</h3>
-
-    <label for="email"></label>
-    <input type="text" id="email" name="email" value="{{foundUser.email}}" placeholder=" {{foundUser.email}}">
+        <label for="email"></label>
+        <input type="text" id="email" name="email" value="{{foundUser.email}}" placeholder=" {{foundUser.email}}">
 
 
-    <h3>Bio</h3>
+        <h2>Bio</h2>
 
-    <label for="bio"></label>
-    <input type="text" id="bio" name="bio" value="{{foundUser.bio}}" placeholder=" {{foundUser.bio}}">
+        <label for="bio"></label>
+        <input type="text" id="bio" name="bio" value="{{foundUser.bio}}" placeholder=" {{foundUser.bio}}">
 
-    <br><br>
-    <button type="submit">Save Changes</button>
+        <br><br>
+        <button type="submit">Save</button>
 
-</form>
-<br>
-<a href="/">Cancel</a>
+    </form>
+    <br>
+    <a href="/">Cancel</a>
+</div>
+
+
 
 
 {{#if errorMessage}}
 {{errorMessage}}
 {{/if}}
+
+<footer class="footer">
+    <h3>Company</h3>
+    <ul>
+        <li><a href="info/about">About</a></li>
+        <li><a href="/">Press</a></li>
+        <li><a href="info/contact">Contact</a></li>
+        <li><a href="/">Linkme for business</a></li>
+        <li><a href="/">Linkme for charity</a></li>
+    </ul>
+    <h3>Support</h3>
+    <ul>
+        <li><a href="support/faqs">FAQs</a></li>
+        <li><a href="support/howto">How to?</a></li>
+        <li><a href="/">Getting Started?</a></li>
+        <li><a href="/">Help</a></li>
+        <li><a href="/">Report Violation</a></li>
+    </ul>
+    <h3>Legal</h3>
+    <ul>
+        <li><a href="/">Terms and conditions</a></li>
+        <li><a href="/">Privacy Policy</a></li>
+    </ul>
+
+</footer>

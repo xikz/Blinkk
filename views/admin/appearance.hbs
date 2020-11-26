@@ -1,40 +1,45 @@
 <div class="homeNav">
 
-    <h1>Linkmee</h1>
+    <h1>Blink</h1>
     <ul>
         <li><a href="support/faqs">Help</a></li>
-        <a href="/">View your Profile</a>
-        <a href="/auth/logout">Log out</a>
+        <li><a href="/settings">Settings</a></li>
+        <li><a href="/auth/logout">Log out</a></li>
     </ul>
 
 
 </div>
+
 <nav class="adminNav">
-    <a href="/admin/links">My Links</a>
-    <a href="/settings">User Settings</a>
-    <a href="/appearance" class="menuNavBold">Appearance</a>
-    <a href="/admin/analytics">Analytics</a>
+    <a href="/{{foundUser.username}}">View your Profile</a>
+    {{!-- <a href="/admin/links">My Links</a>
+    <a href="/settings">Settings</a>
+    <a href="/appearance" class="menuNavBold">Appearance</a> --}}
+    {{!-- <a href="/admin/analytics">Analytics</a> --}}
 </nav>
 <div class="appearancePage">
 
+    <div>
+        <h2>Edit profile picture</h2>
 
-    <h3>profile picture</h3>
+        <img src="{{foundUser.profilePic}}">
+        <div class="uploadImage">
+            <form method="POST" action="/appearance" enctype="multipart/form-data" style="width: 100px;">
+                <input type="file" name="imageUrl" accept="image/png, image/jpg">
+                <button type="submit">Submit</button>
+            </form>
+        </div>
 
-    <img src="{{foundUser.profilePic}}" style="width: 100px">
 
-    <h1>{{foundUser.username}}</h1>
+        {{#if errorMessage}}
+        {{errorMessage}}
+        {{/if}}
+        <br>
+        <button type="submit">Remove</button>
+    </div>
 
-    <form method="POST" action="/appearance" enctype="multipart/form-data" style="width: 100px;">
-        <input type="file" name="imageUrl" accept="image/png, image/jpg">
-        <button type="submit">Submit</button>
-    </form>
-
-    {{#if errorMessage}}
-    {{errorMessage}}
-    {{/if}}
-    <br>
-    <button type="submit">Remove</button>
 </div>
+
 
 
 <footer class="footer">

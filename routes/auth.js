@@ -122,7 +122,7 @@ router.post("/login", shouldNotBeLoggedIn, (req, res) => {
         }
         // req.session.user = user._id ! better and safer but in this case we saving the entire user object
         req.session.user = user;
-        return res.redirect("/admin");
+        return res.redirect("/admin/links");
       });
     })
 

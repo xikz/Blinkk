@@ -27,27 +27,28 @@ router.get("/:username", (req, res) => {
 
 router.get("/:username/:groupId", (req, res) => {
   const username = req.params;
+  console.log(req.params);
 
-  // console.log("GROUPPSSSS");
+  console.log("GROUPPSSSS");
 
-  // User.findOne({ username: username.username })
-  //   .populate("groups")
-  //   .then((userFound) => {
-  //     console.log("LDLDLDLD", userFound);
-  //     const profilePic = userFound.profilePic;
-  //     const bio = userFound.bio;
-  //     const groups = userFound.groups;
-  //     Group.findById(req.params.groupId)
-  //       .populate("links")
-  //       .then((group) => {
-  //         links = group.links;
-  //         object = { profilePic, groups, bio, links: links };
-  //         console.log("THIS IS:", object);
-  //         // console.log(object.links[0]);
-  //         res.render("userProfile/userCollection", object);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   });
+  User.findOne({ username: username.username })
+    .populate("groups")
+    .then((userFound) => {
+      // console.log("LDLDLDLD", userFound);
+      const profilePic = userFound.profilePic;
+      const bio = userFound.bio;
+      const groups = userFound.groups;
+      Group.findById(req.params.groupId)
+        .populate("links")
+        .then((group) => {
+          links = group.links;
+          object = { username, profilePic, groups, bio, links: links };
+          console.log("THIS IS:", object.username.username);
+          // console.log(object.links[0]);
+          res.render("userProfile/userCollection", { object });
+        })
+        .catch((err) => console.log(err));
+    });
 
   // User.findById(req.params.groupId)
   //   .populate("links")

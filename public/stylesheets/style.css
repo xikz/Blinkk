@@ -1,20 +1,27 @@
 body {
   margin: -33px 0 0 0;
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-family: Helvetica, sans-serif;
+}
+
+.hambMenu {
+  z-index: 1;
 }
 
 .homepageNav {
   display: flex;
   position: fixed;
   flex-direction: row;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgb(255, 255, 255);
   /* border-bottom: 1px solid rgb(201, 201, 201); */
   color: white;
   justify-content: space-between;
   margin-top: -1px;
   width: 100vw;
-  padding: 0px 12px;
+  padding: 22px 12px;
+  height: 50px;
+  /* z-index: -1; */
 }
 
 .homeNav {
@@ -26,7 +33,6 @@ body {
   color: rgb(0, 0, 0);
   justify-content: space-between;
   margin-top: -1px;
-  width: 100vw;
 }
 
 .homeNav ul {
@@ -59,7 +65,7 @@ body {
 .signUpButton {
   text-decoration: none;
   font-size: 13px;
-  background-color: rgb(104, 104, 206);
+  background-color: rgb(255, 137, 239);
   height: 30px;
   color: white;
   width: 90px;
@@ -162,10 +168,14 @@ body {
   width: 220px;
   height: 40px;
   border-radius: 14px;
-  background-color: rgb(97, 134, 255);
+  background-color: rgb(255, 137, 239);
   border: none;
   color: white;
   font-size: 18px;
+}
+
+.login a {
+  color: #5941a9;
 }
 
 .signup {
@@ -213,12 +223,17 @@ input::placeholder {
   font-size: 15px;
 }
 
+/* .uploadImage {
+  display: flex;
+  flex-direction: ro;
+} */
+
 .signup button {
   margin-top: 30px;
   width: 220px;
   height: 40px;
   border-radius: 14px;
-  background-color: rgb(97, 134, 255);
+  background-color: rgb(255, 137, 239);
   border: none;
   color: white;
   font-size: 18px;
@@ -235,6 +250,7 @@ input::placeholder {
 
 .signup a {
   display: inline;
+  color: #5941a9;
 }
 
 .signup form {
@@ -275,6 +291,7 @@ input::placeholder {
 .adminNav {
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid rgb(194, 194, 194);
+  border-top: 1px solid rgb(194, 194, 194);
   height: 50px;
   display: flex;
   flex-direction: row;
@@ -286,18 +303,29 @@ input::placeholder {
   background-color: rgb(255, 255, 255);
   border-bottom: 1px solid rgb(194, 194, 194);
   border-top: 1px solid rgb(194, 194, 194);
-  height: 50px;
+  height: 55px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100vw;
+  position: relative;
+  margin-top: -5px;
 }
 
 .adminNavAdminLinks a {
   margin: 0px 10px;
   text-decoration: none;
   color: black;
+}
+
+.adminHambMenu {
+  height: 50px;
+}
+
+.adminHambMenu h1 {
+  padding-left: 15px;
+  font-size: 33px;
 }
 
 .linkForm input {
@@ -492,8 +520,8 @@ ul {
   background-color: rgb(255, 255, 255);
   width: 97vw;
   height: 70px;
-  border: 3px solid black;
-  border-radius: 14px;
+  border: 2.5px solid black;
+  border-radius: 18px;
   margin: 10px auto;
   font-size: 10px;
   color: black;
@@ -524,7 +552,22 @@ ul {
   height: 40px;
   border: 3px solid black;
   border-radius: 25px;
-  margin: 5px 5px;
+  margin: 2px 5px;
+  font-size: 8px;
+  color: rgb(0, 0, 0);
+}
+
+.collectionContainer:hover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  width: 20vw;
+  height: 40px;
+  border: 3px solid black;
+  border-radius: 25px;
+  margin: 2px 5px;
   font-size: 8px;
   color: rgb(0, 0, 0);
 }
@@ -577,6 +620,203 @@ ul {
   flex-direction: column;
 }
 
+.appearancePage {
+  padding: 15px;
+}
+
+.appearancePage h1 {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.appearancePage h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.appearancePage img {
+  border-radius: 20%;
+  width: 100px;
+}
+
+.appearancePage button {
+  background-color: white;
+}
+
 #add-new-collection {
 }
-/*# sourceMappingURL=style.css.map */
+
+.homepageNav {
+}
+
+.hambMenu {
+  width: 25px;
+  height: 30px;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: rgb(141, 141, 141);
+  transition: all 0.5s;
+}
+
+.change .line-1 {
+  transform: rotateZ(-45deg) translate(-8px, 6px);
+}
+
+.change .line-2 {
+  opacity: 0;
+}
+
+.change .line-3 {
+  transform: rotateZ(45deg) translate(-8px, -6px);
+}
+
+.hambNav {
+  width: 300px;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  position: fixed;
+  top: 0;
+  right: -300px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  transition: right 0.8s cubic-bezier(1, 0, 0, 1);
+}
+
+.change {
+  right: 0;
+}
+
+.nav-list {
+  text-align: left;
+}
+
+.nav-item {
+  list-style: none;
+  margin: 25px 35px;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 30px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: rgb(251, 212, 255);
+}
+
+.nav-link-small {
+  font-size: 20px;
+  text-transform: capitalize;
+}
+
+.nav-link-big {
+  font-size: 30px;
+  text-transform: capitalize;
+}
+
+.editProfile {
+  margin: 10px 0px 120px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editPassword {
+  margin: 10px 0px 120px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editPassword input {
+  background-color: rgb(241, 241, 241);
+  width: 90vw;
+  height: 55px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.116);
+  padding-left: 20px;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  margin-top: 5px;
+}
+
+.editPassword button {
+  text-decoration: none;
+  font-size: 13px;
+  background-color: rgb(104, 104, 206);
+  height: 30px;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 20px 20px;
+}
+
+.editPassword form {
+  display: flex;
+  flex-direction: column;
+}
+
+.editProfile h1 {
+  font-size: 30px;
+  padding-bottom: 10px;
+}
+
+.editProfile h2 {
+  font-size: 17px;
+  padding-top: 15px;
+}
+
+.editProfile input {
+  background-color: rgb(241, 241, 241);
+  width: 90vw;
+  height: 55px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.116);
+  padding-left: 20px;
+  font-size: 15px;
+  color: black;
+}
+
+.editProfile button {
+  text-decoration: none;
+  font-size: 13px;
+  background-color: rgb(104, 104, 206);
+  height: 30px;
+  color: white;
+  width: 90px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.analyticsPage {
+  height: 700px;
+}
+
+.adminNavNew {
+  height: 50px;
+}
+
+/* .hambContainerAdmin {
+  background-color: green;
+} */
