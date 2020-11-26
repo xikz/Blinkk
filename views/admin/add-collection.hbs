@@ -17,23 +17,26 @@
     <a href="/admin/analytics">Analytics</a>
 </nav>
 <br><br>
-<h1>Collections</h1>
-<h2>Adding a new collection</h2>
-<form action="/admin/addcollection" method="POST">
 
-    <label for="collectionName">Collection Name</label>
-    <input type="text" id="collectionName" name="collectionName" , placeholder="Collection Name">
+<div class="linksPage">
+    <h2>- add collection -</h2>
+    <form action="/admin/addcollection" method="POST">
 
-    <label for="collectionImage">image</label>
-    <input type="text" id="collectionImage" name="collectionImage">
+        <label for="collectionName">Collection Name</label>
+        <input type="text" id="collectionName" name="collectionName" , placeholder="Collection Name">
 
-    <button type="submit">Add Collection</button>
-</form>
+        <label for="collectionImage">image</label>
+        <input type="text" id="collectionImage" name="collectionImage">
 
-<h2>User Collections:</h2>
+        <button type="submit">Add Collection</button>
+    </form>
 
-{{#each user.groups}}
-<div>{{this.groupName}}
-    <a href="#">Open Collection</a>
+    <h2>User Collections:</h2>
+
+    {{#each user.groups}}
+    <div>{{this.groupName}}
+        <a href="#">Open Collection</a>
+    </div>
+    {{/each}}
+
 </div>
-{{/each}}

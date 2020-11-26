@@ -24,7 +24,6 @@ router.get("/links", isLoggedIn, (req, res, next) => {
       const links = user.links.filter((link) => link.status === "Unassigned");
       const groups = user.groups;
       user = { user, links, groups };
-      console.log("VISITING LINKS PAGE", user);
       res.render("admin/links", { user: user });
     });
 });
@@ -137,7 +136,7 @@ router.post("/addcollection", isLoggedIn, (req, res, next) => {
         }
       ).then((updatedUser) => {
         console.log(updatedUser);
-        res.redirect("/admin/add-collection");
+        res.redirect("/admin/links");
       });
     })
     .catch((err) => {

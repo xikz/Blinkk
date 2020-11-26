@@ -5,7 +5,6 @@ const { Schema, model, Mongoose } = require("mongoose");
 const linkSchema = new Schema({
   linkTitle: {
     type: String,
-    unique: true,
     required: true,
   },
   linkDescription: {

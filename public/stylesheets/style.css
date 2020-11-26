@@ -260,6 +260,26 @@ input::placeholder {
   align-items: center;
 }
 
+.add-link-button {
+  border: none;
+  margin: 4px 0px;
+  border-right: 3px solid black;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  padding: 10px;
+  background-color: rgb(255, 230, 1);
+  border-radius: 10px;
+}
+
+.add-link-button:hover {
+  cursor: pointer;
+}
+
+#add-link-button:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+
 .settingsList {
   height: 800px;
   background-color: black;
@@ -301,16 +321,30 @@ input::placeholder {
 }
 
 .linkForm input {
-  margin-top: 5px;
-  width: 80vw;
-  height: 20px;
+  box-sizing: border-box;
+  color: black;
+  margin: 10px 0px;
+  padding: 5px 10px;
+  width: 100%;
   background-color: rgb(236, 236, 236);
   border-radius: 5px;
-  border: 1px solid rgb(158, 158, 158);
+  border: none;
+  border-bottom: 3px solid black;
+}
+.linkForm input:focus {
+  outline: none;
+}
+.linkForm input::placeholder {
+  color: grey;
 }
 
-.linkForm button {
-  border: none;
+#linkUrl {
+  background-color: rgb(248, 63, 223);
+  padding: 7px 10px;
+  color: white;
+}
+#linkUrl::placeholder {
+  color: white;
 }
 
 .adminNav a {
@@ -348,40 +382,38 @@ ul {
   padding: 0px;
   list-style: none;
 }
-.addinLinkTab {
+/* .addinLinkTab {
   background-color: rgb(238, 238, 238);
   padding: 10px;
   margin: 10px auto;
   border-radius: 15px;
-}
+} */
 
 .linksPage {
-  width: 92vw;
   margin: 0px auto;
-}
-
-.linksPage h2 {
+  border: 4px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
 }
 
 .admin-link {
-  background-color: rgb(223, 223, 223);
-  /* padding: 5px 0px; */
-  margin: 10px 0px;
-  border-radius: 15px;
-  border: 3px solid rgba(0, 0, 0, 0.144);
-  height: 55px;
+  padding: 5px 8px;
+  border: none;
+  /* border-bottom: 1px solid black; */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  width: 100%;
+  margin: 4px 0px;
+  background-color: rgb(255, 241, 187);
+  border-radius: 10px;
 }
 
+.admin-link:hover {
+  opacity: 0.7;
+}
 .admin-link-name {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 12px;
 }
 .admin-link-updates {
   display: flex;
@@ -389,19 +421,10 @@ ul {
 }
 
 .admin-link a {
+  margin: 0px 3px;
   font-size: 12px;
   text-decoration: none;
-}
-
-.addLinkButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(60, 145, 255);
-  border-radius: 12px;
-  height: 50px;
-  color: rgb(255, 255, 255);
-  margin: 35px auto;
+  color: black;
 }
 
 .addCollectionButton {
@@ -421,15 +444,14 @@ ul {
 }
 
 .drop-zone--over {
-  opacity: 0.5;
+  opacity: 0.2;
 }
 
 .user-collections {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 30px auto;
+  justify-content: flex-start;
 }
 
 .user-collections a {
@@ -438,14 +460,19 @@ ul {
 }
 
 .collection {
-  background-color: white;
+  background-color: rgb(248, 63, 223);
   padding: 13px 20px;
-  margin: 5px;
+  margin: 5px 5px 10px 0px;
   color: black;
   text-decoration: none;
-  border: 0.5px rgba(194, 194, 194, 0.541) solid;
-  border-radius: 23px;
-  font-weight: 400;
+  border: none;
+  border-bottom: 3px solid black;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.collection:hover {
+  opacity: 0.7;
 }
 
 .collection-admin-text {
