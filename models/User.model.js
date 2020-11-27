@@ -27,6 +27,9 @@ const userSchema = new Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Link",
     },
+    //   appearance: {
+    // bgColor: String
+    //   }
   ],
 
   interests: [{ type: String, enum: ["Music", "Food", "Sports"] }],

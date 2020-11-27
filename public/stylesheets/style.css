@@ -2,7 +2,7 @@ body {
   margin: -33px 0 0 0;
   padding: 0px;
   font: 14px;
-  font-family: Helvetica, sans-serif;
+  font-family: Lucida, Helvetica, sans-serif;
 }
 
 .hambMenu {
@@ -108,7 +108,7 @@ body {
 /** footer styling **/
 .footer {
   margin-top: -33px;
-  padding: 30px 0px 0px 20px;
+  padding: 30px 0px 50px 20px;
   background-color: black;
   color: white;
 }
@@ -121,8 +121,8 @@ body {
 .footer a {
   text-decoration: none;
   color: white;
-  font-size: 12px;
-  line-height: 3;
+  font-size: 15px;
+  line-height: 2;
   padding-left: 15px;
 }
 
@@ -164,7 +164,7 @@ body {
 }
 
 .login button {
-  margin-top: 30px;
+  margin-top: 10px;
   width: 220px;
   height: 40px;
   border-radius: 14px;
@@ -176,6 +176,22 @@ body {
 
 .login a {
   color: #5941a9;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.login p {
+  margin-top: 140px;
+}
+
+.loginNav ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.loginNav ul > li {
+  padding: 0px 10px;
+  color: rgba(71, 71, 71, 0.74);
 }
 
 .signup {
@@ -222,11 +238,6 @@ input::placeholder {
   color: black;
   font-size: 15px;
 }
-
-/* .uploadImage {
-  display: flex;
-  flex-direction: ro;
-} */
 
 .signup button {
   margin-top: 30px;
@@ -276,6 +287,26 @@ input::placeholder {
   align-items: center;
 }
 
+.add-link-button {
+  border: none;
+  margin: 4px 0px;
+  border-right: 3px solid black;
+  border-left: 3px solid black;
+  border-bottom: 3px solid black;
+  padding: 10px;
+  background-color: rgb(255, 230, 1);
+  border-radius: 10px;
+}
+
+.add-link-button:hover {
+  cursor: pointer;
+}
+
+#add-link-button:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+
 .settingsList {
   height: 800px;
   background-color: black;
@@ -297,6 +328,10 @@ input::placeholder {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.adminNav a {
+  color: rgb(255, 137, 239);
 }
 
 .adminNavAdminLinks {
@@ -329,16 +364,30 @@ input::placeholder {
 }
 
 .linkForm input {
-  margin-top: 5px;
-  width: 80vw;
-  height: 20px;
+  box-sizing: border-box;
+  color: black;
+  margin: 10px 0px;
+  padding: 5px 10px;
+  width: 100%;
   background-color: rgb(236, 236, 236);
   border-radius: 5px;
-  border: 1px solid rgb(158, 158, 158);
+  border: none;
+  border-bottom: 3px solid black;
+}
+.linkForm input:focus {
+  outline: none;
+}
+.linkForm input::placeholder {
+  color: grey;
 }
 
-.linkForm button {
-  border: none;
+#linkUrl {
+  background-color: rgb(248, 63, 223);
+  padding: 7px 10px;
+  color: white;
+}
+#linkUrl::placeholder {
+  color: white;
 }
 
 .adminNav a {
@@ -376,40 +425,38 @@ ul {
   padding: 0px;
   list-style: none;
 }
-.addinLinkTab {
+/* .addinLinkTab {
   background-color: rgb(238, 238, 238);
   padding: 10px;
   margin: 10px auto;
   border-radius: 15px;
-}
+} */
 
 .linksPage {
-  width: 92vw;
   margin: 0px auto;
-}
-
-.linksPage h2 {
+  border: 4px solid black;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px;
 }
 
 .admin-link {
-  background-color: rgb(223, 223, 223);
-  /* padding: 5px 0px; */
-  margin: 10px 0px;
-  border-radius: 15px;
-  border: 3px solid rgba(0, 0, 0, 0.144);
-  height: 55px;
+  padding: 5px 8px;
+  border: none;
+  /* border-bottom: 1px solid black; */
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  width: 100%;
+  margin: 4px 0px;
+  background-color: rgb(255, 241, 187);
+  border-radius: 10px;
 }
 
+.admin-link:hover {
+  opacity: 0.7;
+}
 .admin-link-name {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 12px;
 }
 .admin-link-updates {
   display: flex;
@@ -417,19 +464,10 @@ ul {
 }
 
 .admin-link a {
+  margin: 0px 3px;
   font-size: 12px;
   text-decoration: none;
-}
-
-.addLinkButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(60, 145, 255);
-  border-radius: 12px;
-  height: 50px;
-  color: rgb(255, 255, 255);
-  margin: 35px auto;
+  color: black;
 }
 
 .addCollectionButton {
@@ -449,15 +487,18 @@ ul {
 }
 
 .drop-zone--over {
-  opacity: 0.5;
+  opacity: 0.2;
 }
+
+/* .test1 button {
+  margin: 0 auto;
+} */
 
 .user-collections {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: center;
-  margin: 30px auto;
+  justify-content: flex-start;
 }
 
 .user-collections a {
@@ -465,15 +506,50 @@ ul {
   text-decoration: none;
 }
 
+.appContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.uploadImage form {
+  margin-top: 30px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin-left: -120px;
+}
+
+.uploadImage button {
+  margin-top: 10px;
+  width: 220px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: rgb(248, 63, 223);
+}
+
+.uploadImage {
+  background-color: rgb(243, 243, 243);
+  width: 300px;
+  height: 310px;
+  margin-top: 20px;
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.185);
+}
+
 .collection {
-  background-color: white;
+  background-color: rgb(248, 63, 223);
   padding: 13px 20px;
-  margin: 5px;
+  margin: 5px 5px 10px 0px;
   color: black;
   text-decoration: none;
-  border: 0.5px rgba(194, 194, 194, 0.541) solid;
-  border-radius: 23px;
-  font-weight: 400;
+  border: none;
+  border-bottom: 3px solid black;
+  border-radius: 10px;
+  font-size: 13px;
+}
+
+.collection:hover {
+  opacity: 0.7;
 }
 
 .collection-admin-text {
@@ -493,6 +569,7 @@ ul {
 
 .userProfileIntro img {
   width: 120px;
+  height: 120px;
   border-radius: 50%;
 }
 
@@ -506,6 +583,7 @@ ul {
   font-size: 0.9em;
   width: 70vw;
   text-align: center;
+  font-weight: 600;
 }
 
 .userProfileLink a {
@@ -518,13 +596,15 @@ ul {
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  width: 97vw;
-  height: 70px;
+  width: 90vw;
+  height: 45px;
   border: 2.5px solid black;
-  border-radius: 18px;
+  border-radius: 15px;
   margin: 10px auto;
   font-size: 10px;
   color: black;
+  text-align: center;
+  padding: 15px 15px;
 }
 
 .linkContainer:hover {
@@ -533,13 +613,28 @@ ul {
   justify-content: center;
   align-items: center;
   background-color: rgb(0, 0, 0);
-  width: 97vw;
-  height: 70px;
+  width: 90vw;
+  height: 45px;
   border: 3px solid black;
   border-radius: 14px;
   margin: 10px auto;
   font-size: 10px;
   color: white;
+  padding: 15px 15px;
+}
+
+/* .appearancePic {
+  display: flex;
+  flex-direction: row;
+  background-color: red;
+  height: 200px;
+} */
+
+.uploadImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 80px;
 }
 
 .collectionContainer {
@@ -548,12 +643,13 @@ ul {
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 137, 239);
-  width: 20vw;
+  width: 25vw;
   height: 40px;
-  border: 3px solid black;
-  border-radius: 25px;
+  border: 2.8px solid black;
+  border-radius: 21px;
   margin: 2px 5px;
   font-size: 8px;
+  padding: 0px 10px;
   color: rgb(0, 0, 0);
 }
 
@@ -563,7 +659,7 @@ ul {
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 255, 255);
-  width: 20vw;
+  width: 25vw;
   height: 40px;
   border: 3px solid black;
   border-radius: 25px;
@@ -591,8 +687,10 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
   width: 97vw;
+  text-align: center;
 }
 
 #add-new-collection {
@@ -601,6 +699,7 @@ ul {
 
 .menuButton {
   background-color: white;
+  border: 2px solid;
   width: 50px;
   height: 30px;
   margin: 5px;
@@ -635,8 +734,10 @@ ul {
 }
 
 .appearancePage img {
-  border-radius: 20%;
-  width: 100px;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  margin-top: 20px;
 }
 
 .appearancePage button {
@@ -736,77 +837,102 @@ ul {
   align-items: center;
 }
 
+.editProfileInside {
+  margin: 10px 0px 120px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .editPassword {
   margin: 10px 0px 120px 0px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.editProfile form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .editPassword input {
   background-color: rgb(241, 241, 241);
-  width: 90vw;
+  width: 85vw;
   height: 55px;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.116);
   padding-left: 20px;
   font-size: 15px;
   color: rgb(0, 0, 0);
-  margin-top: 5px;
-}
-
-.editPassword button {
-  text-decoration: none;
-  font-size: 13px;
-  background-color: rgb(104, 104, 206);
-  height: 30px;
-  color: white;
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 10px;
-  padding: 20px 20px;
+  margin-top: 15px;
 }
 
 .editPassword form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .editProfile h1 {
-  font-size: 30px;
-  padding-bottom: 10px;
+  font-size: 35px;
+  margin-bottom: 2px;
 }
 
 .editProfile h2 {
   font-size: 17px;
-  padding-top: 15px;
+  padding-top: 12px;
 }
 
 .editProfile input {
   background-color: rgb(241, 241, 241);
-  width: 90vw;
+  width: 85vw;
   height: 55px;
   border-radius: 12px;
   border: 1px solid rgba(0, 0, 0, 0.116);
   padding-left: 20px;
   font-size: 15px;
   color: black;
+  margin-top: 30px;
 }
 
 .editProfile button {
   text-decoration: none;
-  font-size: 13px;
-  background-color: rgb(104, 104, 206);
+  font-size: 20px;
+  background-color: rgb(255, 137, 239);
   height: 30px;
   color: white;
-  width: 90px;
+  padding: 20px 20px;
+  width: 300px;
+  height: 50px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px auto 0px;
+}
+
+.editPassword button {
+  text-decoration: none;
+  font-size: 17px;
+  background-color: rgb(255, 137, 239);
+  height: 30px;
+  color: white;
   border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+  margin-bottom: 60px;
+  padding: 20px 20px;
+  width: 300px;
+}
+
+.editPassword h4 {
+  margin-top: -10px;
 }
 
 .analyticsPage {
@@ -819,4 +945,20 @@ ul {
 
 /* .hambContainerAdmin {
   background-color: green;
+} */
+
+/* .profileAppearance {
+  background-image: url(https://www.brabbu.com/en/inspiration-and-ideas/wp-content/uploads/2015/08/Mood-Board-Sea-Hues-Blue.jpg);
+  background-image: fill;
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgb(128, 198, 255);
+  height: 100vh;
+  margin-top: -3px;
+  color: #5941a9;
+}
+
+.profileAppearance button {
+  background-color: red;
 } */

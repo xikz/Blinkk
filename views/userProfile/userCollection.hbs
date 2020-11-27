@@ -1,5 +1,5 @@
-<div class="menuButton">
-    <button type="button"><a href="/admin/links">Home</a></button>
+<div>
+    <button class="menuButton" type="button"><a href="/admin/links">Home</a></button>
 </div>
 
 <div class="userProfileIntro">
@@ -10,6 +10,11 @@
 
 <div class="userProfileLink">
     <div class="collections">
+        <a href="/{{object.username.username}}">
+            <div class="collectionContainer">
+                <h2>All links</h2>
+            </div>
+        </a>
         {{#each object.groups as |group|}}
         <a href="/{{../object.username.username}}/{{group._id}}">
             <div class="collectionContainer">

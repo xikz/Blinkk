@@ -83,7 +83,7 @@ router.post("/password", isLoggedIn, (req, res) => {
     req.session.user = newAndUpdatedUser;
     // after we update user with the new data, here we are just making sure that we have the most up to date info in the session. This user now has a new password therefore we should have the new password also on the user session
     res.render("sett/password", {
-      message: "Password sucesfully updated!",
+      message: "Password successfully updated!",
     });
   });
 });
@@ -104,7 +104,7 @@ router.post("/upload", isLoggedIn, (req, res) => {
   User.findOne({ username }).then((foundUser) => {
     if (foundUser && foundUser.username !== req.session.user.username) {
       console.log("This username is already taken");
-      return res.render("sett/profile", {
+      return res.render("admin/links", {
         errorMessage: "This username is already taken",
         user: req.session.user,
       });
@@ -117,7 +117,7 @@ router.post("/upload", isLoggedIn, (req, res) => {
     ).then((newAndUpdatedUser) => {
       console.log("newAndFierceUpdatedUser:", newAndUpdatedUser);
       req.session.user = newAndUpdatedUser;
-      res.render("sett/profile", { newAndUpdatedUser });
+      res.render("admin/links", { newAndUpdatedUser });
     });
   });
 });

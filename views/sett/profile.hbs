@@ -1,50 +1,45 @@
 <div class="homeNav">
 
-    <h1>Blink</h1>
+    <h1>🔗</h1>
     <ul>
-        <li><a href="support/faqs">Help</a></li>
-        <a href="/{{username}}">View your Profile</a>
+        <li><a href="/support/faqs">Help?</a></li>
+        <a href="/admin/links">Admin</a>
         <a href="/auth/logout">Log out</a>
     </ul>
 
 
 </div>
-
 <nav class="adminNav">
-    <a href="/admin/links">Settings</a>
+    <a href="/settings/profile" class="menuNavBold">Edit Profile</a>
+    <a href=" /settings/password">Change Password</a>
     <a href="/appearance">Appearance</a>
-    <a href="/admin/analytics" class="menuNavBold">Appearance</a>
 </nav>
 
 
 
 
 <div class="editProfile">
-    <form action="/settings/upload" method="POST">
-        <h1>Edit your profile</h1>
-        <h2>Username</h2>
+    <h1>Edit your profile</h1>
+    <form class="test2" action="/settings/upload" method="POST">
 
         <label for="username"></label>
         <input type="text" id="username" name="username" value="{{foundUser.username}}"
             placeholder="{{foundUser.username}}">
 
-        <h2>Email</h2>
-
         <label for="email"></label>
         <input type="text" id="email" name="email" value="{{foundUser.email}}" placeholder=" {{foundUser.email}}">
 
 
-        <h2>Bio</h2>
-
         <label for="bio"></label>
         <input type="text" id="bio" name="bio" value="{{foundUser.bio}}" placeholder=" {{foundUser.bio}}">
 
+
+        <div class="test1"></div>
         <br><br>
         <button type="submit">Save</button>
-
-    </form>
-    <br>
-    <a href="/">Cancel</a>
+</div>
+</form>
+<br>
 </div>
 
 

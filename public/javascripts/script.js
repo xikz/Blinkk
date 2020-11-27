@@ -1,6 +1,4 @@
-axios.get("/api").then((resp) => {
-  console.log(resp);
-});
+axios.get("/api").then((resp) => {});
 
 document.addEventListener(
   "DOMContentLoaded",
@@ -15,7 +13,7 @@ let currentDrag = null;
 
 let ul = document.querySelector(".admin-links");
 //ul.innerHTML = `<h1>Help</h1>`;
-console.log(ul);
+
 let adminLinks = document.querySelectorAll(".admin-links li");
 
 const draggableLinks = document.querySelectorAll(".admin-link");

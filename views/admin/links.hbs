@@ -2,10 +2,10 @@
 
 <div class="homeNav">
 
-   <h1>Blink</h1>
+   <h1>🔗</h1>
    <ul>
-      <li><a href="support/faqs">Help</a></li>
-      <a href="/{{user.user.username}}">View your Profile</a>
+      <li><a href="/support/faqs">Help?</a></li>
+      <a href="/settings/profile">Settings</a>
       <a href="/auth/logout">Log out</a>
    </ul>
 
@@ -13,77 +13,80 @@
 </div>
 
 <nav class="adminNav">
-   <a href="/admin/links" class="menuNavBold">My Links</a>
+   <a href="/{{user.user.username}}">View your Profile</a>
+   {{!-- <a href="/admin/links" class="menuNavBold">My Links</a>
    <a href="/settings">Settings</a>
-   <a href="/appearance">Appearance</a>
+   <a href="/appearance">Appearance</a> --}}
    {{!-- <a href="/admin/analytics">Analytics</a> --}}
 </nav>
 <div class="appearancePage">
    <div class="linksBg">
-
-
       <div class="linksPage">
 
-         {{!-- <h2>MY LINKS</h2> --}}
+         {{!-- <h2>MY LINKS</h2>
+         <div class="addLinkButton">
+            <h2>Add link ➕</h2>
+         </div> --}}
 
+         <h2>- add link - </h2>
 
-         <div class="addinLinkTab">
-
-
-            {{!-- <h2>Adding Link</h2> --}}
-
+         {{title.title}}
+         <form action="/admin/addlink" method="POST">
             <div class="linkForm">
-               <form action="/admin/addlink" method="POST">
+               {{!-- <label for="linkUrl">...url</label> --}}
 
-                  <label for="linkTitle"></label>
-                  <input type="text" id="linkTitle" name="linkTitle" placeholder="Enter title">
+               <input type="text" id="linkUrl" name="linkUrl" placeholder="..url">
 
-                  <label for="linkUrl"></label>
-                  <input type="text" id="linkUrl" name="linkUrl" placeholder="http://url">
+               {{!-- <label for="linkTitle"></label> --}}
+               <input type="text" id="linkTitle" name="linkTitle" placeholder="..title">
 
+               {{!-- <label for="linkDescription"></label> --}}
+               <input type="text" id="linkDescription" name="linkDescription" placeholder="..description">
 
+               {{!-- <label for="contentFrom"></label> --}}
+               <input type="text" id="contentFrom" name="contentFrom" placeholder="..from">
 
-                  {{!-- <label for="linkDescription">Description</label>
-               <input type="text" id="linkDescription" name="linkDescription">
+               {{!-- <label for="thumbnailUrl"></label> --}}
+               <input class="linkImg" style="display:none" type="text" id="thumbnailUrl" name="thumbnailUrl">
 
-               <label for="contentFrom">From</label>
-               <input type="patextssword" id="contentFrom" name="contentFrom">
-
-                <label for="thumbnailUrl">image</label>
-               <input type="text" id="thumbnailUrl" name="thumbnailUrl"> --}}
-
-                  <button type="submit">Add Link</button>
-               </form>
             </div>
-         </div>
+
+            <div id="link-img" class="admin-link-img">
+            </div>
+
+            <button class="add-link-button" type="submit">_add link</button>
+
+         </form>
 
 
+
+         <h2>- my links -</h2>
 
          <ul class="admin-links">
             {{#each user.links}}
             {{#if this.status}}
             <li id={{this._id}} class="admin-link" draggable="true">
-               <div class="admin-link-name">{{this.linkTitle}}</div>
+               <div class="admin-link-name">
+                  {{this.linkTitle}}
+               </div>
                <div class="admin-link-updates">
-                  <a href="#">Update</a>
-                  <a href="/admin/links/{{this._id}}/delete">Delete</a>
+                  <a href="#">update</a>
+                  <a href="/admin/links/{{this._id}}/delete">del</a>
                </div>
             </li>
             {{/if}}
+            {{else}}
+            <h2>...</h2>
             {{/each}}
          </ul>
 
          {{!-- <div class="addCollectionButton">
          <h2>User collections</h2>
-      </div> --}}
+         </div> --}}
 
 
-
+         <h2>- my collections -</h2>
          <div class="user-collections">
-
-            <a href="/admin/add-collection">
-               <div id="add-new-collection" class="collection"> Add new collection </div>
-            </a>
 
             {{#each user.groups}}
             <a href="/admin/open-collection/{{this._id}}">
@@ -91,13 +94,32 @@
                   {{this.groupName}}
                </div>
             </a>
+            {{else}}
+            <h2>...</h2>
             {{/each}}
-
-
-
          </div>
+
+         <form action="/admin/addcollection" method="POST">
+            <div class="linkForm">
+
+               <label for="collectionName"></label>
+               <input type="text" id="collectionName" name="collectionName" , placeholder="..new collection">
+               {{!-- 
+               <label for="collectionImage">image</label>
+               <input type="text" id="collectionImage" name="collectionImage"> --}}
+            </div>
+
+            <button class="add-link-button" type="submit">_add collection</button>
+         </form>
+
       </div>
 
-   </div>
 
-   <script src="/javascripts/script.js"></script>
+
+   </div>
+</div>
+
+</div>
+
+<script src="/javascripts/metascraper.js"></script>
+<script src="/javascripts/script.js"></script>

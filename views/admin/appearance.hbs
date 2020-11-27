@@ -1,9 +1,9 @@
 <div class="homeNav">
 
-    <h1>Blink</h1>
+    <h1>🔗</h1>
     <ul>
-        <li><a href="support/faqs">Help</a></li>
-        <li><a href="/settings">Settings</a></li>
+        <li><a href="/support/faqs">Help?</a></li>
+        <li><a href="/admin/links">Admin</a></li>
         <li><a href="/auth/logout">Log out</a></li>
     </ul>
 
@@ -11,57 +11,52 @@
 </div>
 
 <nav class="adminNav">
-    <a href="/{{foundUser.username}}">View your Profile</a>
-    {{!-- <a href="/admin/links">My Links</a>
-    <a href="/settings">Settings</a>
-    <a href="/appearance" class="menuNavBold">Appearance</a> --}}
-    {{!-- <a href="/admin/analytics">Analytics</a> --}}
+    <a href="/settings/profile">Edit Profile</a>
+    <a href=" /settings/password">Change Password</a>
+    <a href="/appearance" class="menuNavBold">Appearance</a>
 </nav>
-<div class="appearancePage">
+<div class=" appearancePage">
 
-    <div>
+    <div class="appContent">
         <h2>Edit profile picture</h2>
 
-        <img src="{{foundUser.profilePic}}">
+
         <div class="uploadImage">
+            <img src="{{foundUser.profilePic}}">
             <form method="POST" action="/appearance" enctype="multipart/form-data" style="width: 100px;">
                 <input type="file" name="imageUrl" accept="image/png, image/jpg">
                 <button type="submit">Submit</button>
             </form>
+
+
+            {{#if errorMessage}}
+            {{errorMessage}}
+            {{/if}}
+            <br>
+            {{!-- <button type="submit">Remove</button> --}}
         </div>
 
-
-        {{#if errorMessage}}
-        {{errorMessage}}
-        {{/if}}
-        <br>
-        <button type="submit">Remove</button>
     </div>
-
-</div>
-
-
-
-<footer class="footer">
-    <h3>Company</h3>
-    <ul>
-        <li><a href="info/about">About</a></li>
-        <li><a href="/">Press</a></li>
-        <li><a href="info/contact">Contact</a></li>
-        <li><a href="/">Linkme for business</a></li>
-        <li><a href="/">Linkme for charity</a></li>
-    </ul>
-    <h3>Support</h3>
-    <ul>
-        <li><a href="support/faqs">FAQs</a></li>
-        <li><a href="support/howto">How to?</a></li>
-        <li><a href="/">Getting Started?</a></li>
-        <li><a href="/">Help</a></li>
-        <li><a href="/">Report Violation</a></li>
-    </ul>
-    <h3>Legal</h3>
-    <ul>
-        <li><a href="/">Terms and conditions</a></li>
-        <li><a href="/">Privacy Policy</a></li>
-    </ul>
-</footer>
+    {{!-- <footer class="footer">
+        <h3>Company</h3>
+        <ul>
+            <li><a href="info/about">About</a></li>
+            <li><a href="/">Press</a></li>
+            <li><a href="info/contact">Contact</a></li>
+            <li><a href="/">Linkme for business</a></li>
+            <li><a href="/">Linkme for charity</a></li>
+        </ul>
+        <h3>Support</h3>
+        <ul>
+            <li><a href="support/faqs">FAQs</a></li>
+            <li><a href="support/howto">How to?</a></li>
+            <li><a href="/">Getting Started?</a></li>
+            <li><a href="/">Help</a></li>
+            <li><a href="/">Report Violation</a></li>
+        </ul>
+        <h3>Legal</h3>
+        <ul>
+            <li><a href="/">Terms and conditions</a></li>
+            <li><a href="/">Privacy Policy</a></li>
+        </ul>
+    </footer> --}}

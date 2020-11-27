@@ -1,31 +1,33 @@
-<div>
-    <button class="menuButton" type="button"><a href="/admin/links">Home</a></button>
-</div>
+<div class="profileAppearance">
+    <div>
+        <button class="menuButton" type="button"><a href="/admin/links">Home</a></button>
+    </div>
 
-<div class="userProfileIntro">
-    <img src="{{user.profilePic}}">
-    <h1>@{{user.username}}</h1>
-    <h3>{{user.bio}}</h3>
-</div>
+    <div class="userProfileIntro">
+        <img src="{{user.profilePic}}">
+        <h1>@{{user.username}}</h1>
+        <h3>{{user.bio}}</h3>
+    </div>
 
-<div class="userProfileLink">
-    <div class="collections">
-        {{#each userGroups.groups as |group|}}
-        <a href="/{{../user.username}}/{{group._id}}">
-            <div class="collectionContainer">
-                <h2>{{group.groupName}}</h2>
+    <div class="userProfileLink">
+        <div class="collections">
+            {{#each userGroups.groups as |group|}}
+            <a href="/{{../user.username}}/{{group._id}}">
+                <div class="collectionContainer">
+                    <h2>{{group.groupName}}</h2>
+                </div>
+            </a>
+            {{/each}}
+        </div>
+
+
+        {{#each userLinks.links as |link|}}
+        <a href="{{link.linkUrl}}">
+            <div class="linkContainer">
+                <h2>{{link.linkTitle}}</h2>
             </div>
         </a>
         {{/each}}
+
     </div>
-
-
-    {{#each userLinks.links as |link|}}
-    <a href="{{link.linkUrl}}">
-        <div class="linkContainer">
-            <h2>{{link.linkTitle}}</h2>
-        </div>
-    </a>
-    {{/each}}
-
 </div>
