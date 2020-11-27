@@ -22,9 +22,13 @@ url.addEventListener("paste", (e) => {
         thumbnailUrl.value = axiosResp.data.image;
 
         let linkImage = document.querySelector("#link-img");
-
         let img = document.createElement("img");
         img.src = axiosResp.data.image;
+        linkImage.innerHTML = "";
+        linkImage.style.width = "50px";
+        linkImage.style.marginRight = "7px";
+        linkImage.style.borderBottom = "3px solid black";
+        linkImage.style.borderRadius = "12px";
         linkImage.appendChild(img);
       })
       .catch((err) => err);

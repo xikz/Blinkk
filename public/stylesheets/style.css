@@ -374,6 +374,23 @@ input::placeholder {
   border: none;
   border-bottom: 3px solid black;
 }
+
+textarea {
+  box-sizing: border-box;
+  color: black;
+  margin: 10px 0px;
+  padding: 5px 10px;
+  width: 100%;
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+  border: none;
+  border-bottom: 3px solid black;
+}
+
+textarea:focus {
+  outline: none;
+}
+
 .linkForm input:focus {
   outline: none;
 }
@@ -456,6 +473,10 @@ ul {
   opacity: 0.7;
 }
 .admin-link-name {
+  justify-content: flex-start;
+  width: 80%;
+  display: flex;
+  align-items: center;
   font-size: 12px;
 }
 .admin-link-updates {
@@ -468,6 +489,32 @@ ul {
   font-size: 12px;
   text-decoration: none;
   color: black;
+}
+
+.admin-link-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: grey;
+  width: 0px;
+  margin-right: 0px;
+}
+
+.admin-link-img-uploaded {
+  width: 30px;
+  border-radius: 50px;
+  margin-right: 6px;
+}
+
+.img-and-from {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img {
+  width: 100%;
 }
 
 .addCollectionButton {

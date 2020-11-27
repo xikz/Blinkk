@@ -40,19 +40,25 @@
                {{!-- <label for="linkTitle"></label> --}}
                <input type="text" id="linkTitle" name="linkTitle" placeholder="..title">
 
+               <div class="img-and-from">
+                  <div id="link-img" class="admin-link-img">
+                  </div>
+
+                  <input type="text" id="contentFrom" name="contentFrom" placeholder="..from">
+
+               </div>
+
                {{!-- <label for="linkDescription"></label> --}}
-               <input type="text" id="linkDescription" name="linkDescription" placeholder="..description">
+               <textarea type="" id="linkDescription" name="linkDescription" placeholder="..description"></textarea>
 
                {{!-- <label for="contentFrom"></label> --}}
-               <input type="text" id="contentFrom" name="contentFrom" placeholder="..from">
+
 
                {{!-- <label for="thumbnailUrl"></label> --}}
                <input class="linkImg" style="display:none" type="text" id="thumbnailUrl" name="thumbnailUrl">
 
             </div>
 
-            <div id="link-img" class="admin-link-img">
-            </div>
 
             <button class="add-link-button" type="submit">_add link</button>
 
@@ -67,6 +73,9 @@
             {{#if this.status}}
             <li id={{this._id}} class="admin-link" draggable="true">
                <div class="admin-link-name">
+                  <div class="admin-link-img-uploaded">
+                     <img src="{{this.thumbnailUrl}}" alt="">
+                  </div>
                   {{this.linkTitle}}
                </div>
                <div class="admin-link-updates">
