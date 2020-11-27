@@ -498,7 +498,6 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: grey;
   width: 0px;
   margin-right: 0px;
 }
@@ -514,10 +513,6 @@ h1 {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-img {
-  width: 100%;
 }
 
 .addCollectionButton {
@@ -783,11 +778,15 @@ img {
   font-weight: bold;
 }
 
-.appearancePage img {
+.appearancePage > img {
   border-radius: 50%;
   width: 140px;
   height: 140px;
   margin-top: 20px;
+}
+
+img {
+  width: 90%;
 }
 
 .appearancePage button {
