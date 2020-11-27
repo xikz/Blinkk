@@ -1,36 +1,38 @@
-<div>
-    <button class="menuButton" type="button"><a href="/admin/links">account</a></button>
-</div>
+<div class="linksPage">
+    <div>
+        <button class="menuButton" type="button"><a href="/admin/links">account</a></button>
+    </div>
 
-<div class="userProfileIntro">
-    <img src="{{object.profilePic}}">
-    <h1>@{{object.username.username}}</h1>
-    <h3>{{object.bio}}</h3>
-</div>
+    <div class="userProfileIntro">
+        <img src="{{object.profilePic}}">
+        <h1>@{{object.username.username}}</h1>
+        <h3>{{object.bio}}</h3>
+    </div>
 
-<div class="userProfileLink">
-    <div class="collections">
-        <a href="/{{object.username.username}}">
-            <div style="background-color: white" class="collectionContainer">
-                <h2>Profile</h2>
-            </div>
-        </a>
-        {{#each object.groups as |group|}}
-        <a href="/{{../object.username.username}}/{{group._id}}">
-            <div class="collectionContainer">
-                <h2>{{group.groupName}}</h2>
+    <div class="userProfileLink">
+        <div class="collections">
+            <a href="/{{object.username.username}}">
+                <div style="background-color: white" class="collectionContainer">
+                    <h2>Profile</h2>
+                </div>
+            </a>
+            {{#each object.groups as |group|}}
+            <a href="/{{../object.username.username}}/{{group._id}}">
+                <div class="collectionContainer">
+                    <h2>{{group.groupName}}</h2>
+                </div>
+            </a>
+            {{/each}}
+        </div>
+
+
+        {{#each object.links as |link|}}
+        <a href="{{link.linkUrl}}">
+            <div class="linkContainer">
+                <h2>{{link.linkTitle}}</h2>
             </div>
         </a>
         {{/each}}
+
     </div>
-
-
-    {{#each object.links as |link|}}
-    <a href="{{link.linkUrl}}">
-        <div class="linkContainer">
-            <h2>{{link.linkTitle}}</h2>
-        </div>
-    </a>
-    {{/each}}
-
 </div>
