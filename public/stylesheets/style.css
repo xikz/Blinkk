@@ -744,12 +744,11 @@ h1 {
 }
 
 .menuButton {
-  background-color: white;
-  border: 2px solid;
-  width: 50px;
-  height: 30px;
+  background-color: rgb(255, 230, 1);
+  font-weight: 600;
+  border: 3px solid;
   margin: 5px;
-  width: 80px;
+  padding: 10px;
   border-radius: 15px;
 }
 
