@@ -296,6 +296,7 @@ input::placeholder {
   padding: 10px;
   background-color: rgb(255, 230, 1);
   border-radius: 10px;
+  font-weight: 600;
 }
 
 .add-link-button:hover {
