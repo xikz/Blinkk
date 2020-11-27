@@ -22,7 +22,7 @@
 
 
         <div class="uploadImage">
-            <img src="{{foundUser.profilePic}}">
+            <img id="appearenceImg" src="{{foundUser.profilePic}}">
             <form method="POST" action="/appearance" enctype="multipart/form-data" style="width: 100px;">
                 <input type="file" name="imageUrl" accept="image/png, image/jpg">
                 <button id="appearancePagebutton" type="submit">Submit</button>

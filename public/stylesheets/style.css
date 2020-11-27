@@ -778,7 +778,7 @@ h1 {
   font-weight: bold;
 }
 
-.appearancePage > img {
+#appearenceImg {
   border-radius: 50%;
   width: 140px;
   height: 140px;
@@ -786,7 +786,7 @@ h1 {
 }
 
 img {
-  width: 90%;
+  width: 100%;
 }
 
 .appearancePage > button {
