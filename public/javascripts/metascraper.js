@@ -28,7 +28,7 @@ url.addEventListener("paste", (e) => {
         linkImage.style.width = "50px";
         linkImage.style.marginRight = "7px";
         linkImage.style.borderBottom = "3px solid black";
-        linkImage.style.borderRadius = "12px";
+        // linkImage.style.borderRadius = "12px";
         linkImage.appendChild(img);
       })
       .catch((err) => err);

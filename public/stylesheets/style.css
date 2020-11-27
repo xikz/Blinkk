@@ -789,7 +789,7 @@ img {
   width: 90%;
 }
 
-.appearancePage button {
+.appearancePage > button {
   background-color: white;
 }
 
